@@ -312,25 +312,6 @@ function initWaveBackground() {
     const ctx = canvas.getContext('2d');
     let animationFrameId;
     
-    // Set canvas size
-    function resizeCanvas() {
-        canvas.width = canvas.offsetWidth;
-        canvas.height = canvas.offsetHeight;
-    }
-    
-    // Throttle resize events for better performance
-    let resizeTimeout;
-    function throttledResize() {
-        if (resizeTimeout) return;
-        resizeTimeout = setTimeout(() => {
-            resizeCanvas();
-            resizeTimeout = null;
-        }, 100);
-    }
-    
-    resizeCanvas();
-    window.addEventListener('resize', throttledResize);
-    
     // Wave configuration
     const waves = [
         {
@@ -371,15 +352,43 @@ function initWaveBackground() {
         }
     ];
     
+    // Set canvas size and create gradients
+    function resizeCanvas() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+        
+        // Recreate gradients when canvas size changes
+        waves.forEach(wave => {
+            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop(0, wave.color);
+            gradient.addColorStop(0.5, wave.gradientColor);
+            gradient.addColorStop(1, wave.color);
+            wave.gradient = gradient;
+        });
+    }
+    
+    // Throttle resize events for better performance
+    let resizeTimeout;
+    function throttledResize() {
+        if (resizeTimeout) return;
+        resizeTimeout = setTimeout(() => {
+            resizeCanvas();
+            resizeTimeout = null;
+        }, 100);
+    }
+    
+    resizeCanvas();
+    window.addEventListener('resize', throttledResize);
+    
     let time = 0;
     
     function drawWave(wave, yOffset) {
-        ctx.beginPath();
-        
         const centerY = canvas.height / 2 + yOffset;
+        const step = 3; // Draw every 3 pixels for better performance
         
-        // Draw the wave
-        for (let x = 0; x < canvas.width; x++) {
+        // Draw the wave line first
+        ctx.beginPath();
+        for (let x = 0; x < canvas.width; x += step) {
             const y = centerY + 
                      Math.sin(x * wave.frequency + time * wave.speed + wave.offset) * wave.amplitude;
             
@@ -390,24 +399,31 @@ function initWaveBackground() {
             }
         }
         
-        // Create gradient fill
-        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-        gradient.addColorStop(0, wave.color);
-        gradient.addColorStop(0.5, wave.gradientColor);
-        gradient.addColorStop(1, wave.color);
+        // Draw stroke for the wave line
+        ctx.strokeStyle = wave.strokeColor;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        
+        // Now draw the filled area
+        ctx.beginPath();
+        for (let x = 0; x < canvas.width; x += step) {
+            const y = centerY + 
+                     Math.sin(x * wave.frequency + time * wave.speed + wave.offset) * wave.amplitude;
+            
+            if (x === 0) {
+                ctx.moveTo(x, y);
+            } else {
+                ctx.lineTo(x, y);
+            }
+        }
         
         // Complete the path for filling
         ctx.lineTo(canvas.width, canvas.height);
         ctx.lineTo(0, canvas.height);
         ctx.closePath();
         
-        ctx.fillStyle = gradient;
+        ctx.fillStyle = wave.gradient;
         ctx.fill();
-        
-        // Draw stroke for the wave line
-        ctx.strokeStyle = wave.strokeColor;
-        ctx.lineWidth = 2;
-        ctx.stroke();
     }
     
     function animate() {
