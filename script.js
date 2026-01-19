@@ -312,43 +312,85 @@ function initWaveBackground() {
     const ctx = canvas.getContext('2d');
     let animationFrameId;
     
-    // Wave configuration
+    // Wave configuration with more variety and dynamic properties
     const waves = [
         {
-            amplitude: 30,
-            frequency: 0.02,
-            speed: 0.02,
+            baseAmplitude: 50,
+            amplitude: 50,
+            frequency: 0.012,
+            speed: 0.035,
             offset: 0,
-            color: 'rgba(81, 43, 212, 0.3)',
-            gradientColor: 'rgba(81, 43, 212, 0.4)',
-            strokeColor: 'rgba(81, 43, 212, 0.5)'
+            baseColor: { r: 81, g: 43, b: 212 },
+            baseOpacity: 0.15,
+            opacity: 0.15,
+            opacitySpeed: 0.008,
+            amplitudeVariation: 0.005,
+            frequencyVariation: 0.003
         },
         {
-            amplitude: 40,
-            frequency: 0.015,
-            speed: 0.015,
-            offset: Math.PI / 2,
-            color: 'rgba(124, 58, 237, 0.2)',
-            gradientColor: 'rgba(124, 58, 237, 0.3)',
-            strokeColor: 'rgba(124, 58, 237, 0.4)'
+            baseAmplitude: 70,
+            amplitude: 70,
+            frequency: 0.008,
+            speed: 0.018,
+            offset: Math.PI * 0.4,
+            baseColor: { r: 124, g: 58, b: 237 },
+            baseOpacity: 0.12,
+            opacity: 0.12,
+            opacitySpeed: 0.012,
+            amplitudeVariation: 0.007,
+            frequencyVariation: 0.004
         },
         {
-            amplitude: 25,
-            frequency: 0.025,
-            speed: 0.025,
-            offset: Math.PI,
-            color: 'rgba(0, 89, 156, 0.25)',
-            gradientColor: 'rgba(0, 89, 156, 0.35)',
-            strokeColor: 'rgba(0, 89, 156, 0.45)'
-        },
-        {
+            baseAmplitude: 35,
             amplitude: 35,
+            frequency: 0.020,
+            speed: 0.045,
+            offset: Math.PI * 0.7,
+            baseColor: { r: 147, g: 51, b: 234 },
+            baseOpacity: 0.18,
+            opacity: 0.18,
+            opacitySpeed: 0.015,
+            amplitudeVariation: 0.006,
+            frequencyVariation: 0.005
+        },
+        {
+            baseAmplitude: 45,
+            amplitude: 45,
+            frequency: 0.015,
+            speed: 0.022,
+            offset: Math.PI,
+            baseColor: { r: 0, g: 89, b: 156 },
+            baseOpacity: 0.20,
+            opacity: 0.20,
+            opacitySpeed: 0.010,
+            amplitudeVariation: 0.004,
+            frequencyVariation: 0.006
+        },
+        {
+            baseAmplitude: 60,
+            amplitude: 60,
+            frequency: 0.010,
+            speed: 0.028,
+            offset: Math.PI * 1.3,
+            baseColor: { r: 0, g: 120, b: 215 },
+            baseOpacity: 0.16,
+            opacity: 0.16,
+            opacitySpeed: 0.009,
+            amplitudeVariation: 0.008,
+            frequencyVariation: 0.003
+        },
+        {
+            baseAmplitude: 40,
+            amplitude: 40,
             frequency: 0.018,
-            speed: 0.01,
-            offset: Math.PI * 1.5,
-            color: 'rgba(0, 120, 215, 0.2)',
-            gradientColor: 'rgba(0, 120, 215, 0.3)',
-            strokeColor: 'rgba(0, 120, 215, 0.4)'
+            speed: 0.040,
+            offset: Math.PI * 1.8,
+            baseColor: { r: 30, g: 100, b: 200 },
+            baseOpacity: 0.14,
+            opacity: 0.14,
+            opacitySpeed: 0.011,
+            amplitudeVariation: 0.009,
+            frequencyVariation: 0.007
         }
     ];
     
@@ -357,14 +399,7 @@ function initWaveBackground() {
         canvas.width = canvas.offsetWidth;
         canvas.height = canvas.offsetHeight;
         
-        // Recreate gradients when canvas size changes
-        waves.forEach(wave => {
-            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-            gradient.addColorStop(0, wave.color);
-            gradient.addColorStop(0.5, wave.gradientColor);
-            gradient.addColorStop(1, wave.color);
-            wave.gradient = gradient;
-        });
+        // Gradients will be created dynamically in drawWave based on current opacity
     }
     
     // Throttle resize events for better performance
@@ -386,15 +421,31 @@ function initWaveBackground() {
         const centerY = canvas.height / 2 + yOffset;
         const step = 3; // Draw every 3 pixels for better performance
         
-        // Calculate wave points once
+        // Add subtle variation to amplitude and frequency for organic feel
+        const amplitudeNoise = Math.sin(time * wave.amplitudeVariation) * 15;
+        const currentAmplitude = wave.amplitude + amplitudeNoise;
+        
+        // Vary opacity over time for pulsing effect
+        wave.opacity = wave.baseOpacity + Math.sin(time * wave.opacitySpeed) * 0.08;
+        
+        // Calculate wave points with variation
         const points = [];
         for (let x = 0; x < canvas.width; x += step) {
-            const y = centerY + 
-                     Math.sin(x * wave.frequency + time * wave.speed + wave.offset) * wave.amplitude;
+            // Add secondary wave for more organic movement
+            const primaryWave = Math.sin(x * wave.frequency + time * wave.speed + wave.offset);
+            const secondaryWave = Math.sin(x * wave.frequency * 1.5 + time * wave.speed * 0.7 + wave.offset * 1.3) * 0.3;
+            const y = centerY + (primaryWave + secondaryWave) * currentAmplitude;
             points.push({ x, y });
         }
         
-        // Draw the wave line stroke
+        // Create dynamic gradient based on current opacity
+        const { r, g, b } = wave.baseColor;
+        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${wave.opacity * 0.8})`);
+        gradient.addColorStop(0.5, `rgba(${r}, ${g}, ${b}, ${wave.opacity})`);
+        gradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, ${wave.opacity * 0.8})`);
+        
+        // Draw the wave line stroke with dynamic opacity
         ctx.beginPath();
         points.forEach((point, index) => {
             if (index === 0) {
@@ -403,8 +454,8 @@ function initWaveBackground() {
                 ctx.lineTo(point.x, point.y);
             }
         });
-        ctx.strokeStyle = wave.strokeColor;
-        ctx.lineWidth = 2;
+        ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${wave.opacity * 1.5})`;
+        ctx.lineWidth = 1.5;
         ctx.stroke();
         
         // Draw the filled area
@@ -422,7 +473,7 @@ function initWaveBackground() {
         ctx.lineTo(0, canvas.height);
         ctx.closePath();
         
-        ctx.fillStyle = wave.gradient;
+        ctx.fillStyle = gradient;
         ctx.fill();
     }
     
@@ -432,10 +483,13 @@ function initWaveBackground() {
         time += 1;
         
         // Draw each wave with different vertical offsets for layering
-        drawWave(waves[0], -100);
-        drawWave(waves[1], -50);
-        drawWave(waves[2], 50);
-        drawWave(waves[3], 100);
+        // More varied vertical positioning for depth
+        drawWave(waves[0], -120);
+        drawWave(waves[1], -60);
+        drawWave(waves[2], -20);
+        drawWave(waves[3], 30);
+        drawWave(waves[4], 80);
+        drawWave(waves[5], 130);
         
         animationFrameId = requestAnimationFrame(animate);
     }
