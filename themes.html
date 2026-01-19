@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Themes - Choose Your Style</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0d1117 0%, #1a1f2e 100%);
+            color: #e6edf3;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #512BD4 0%, #7c3aed 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b949e;
+            margin-bottom: 3rem;
+            font-size: 1.2rem;
+        }
+
+        .themes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .theme-card {
+            background: #161b22;
+            border: 2px solid #30363d;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .theme-card:hover {
+            transform: translateY(-8px);
+            border-color: #512BD4;
+            box-shadow: 0 20px 40px rgba(81, 43, 212, 0.3);
+        }
+
+        .theme-preview {
+            background: #0d1117;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .theme-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .theme-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(81, 43, 212, 0.9);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .theme-badge.original {
+            background: rgba(0, 120, 215, 0.9);
+        }
+
+        .theme-info {
+            padding: 1.5rem;
+        }
+
+        .theme-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #e6edf3;
+        }
+
+        .theme-description {
+            color: #8b949e;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .theme-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-tag {
+            background: rgba(81, 43, 212, 0.2);
+            color: #e6edf3;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(81, 43, 212, 0.3);
+        }
+
+        .theme-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #512BD4 0%, #7c3aed 100%);
+            color: white;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .theme-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(81, 43, 212, 0.4);
+        }
+
+        .info-section {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .info-section h2 {
+            margin-bottom: 1rem;
+            color: #e6edf3;
+        }
+
+        .info-section p {
+            color: #8b949e;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .info-section code {
+            background: #0d1117;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            color: #7c3aed;
+            font-family: 'Monaco', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .themes-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Portfolio Design Gallery</h1>
+        <p class="subtitle">Choose from multiple modern designs - all using the same data from config.js</p>
+
+        <div class="themes-grid">
+            <!-- Original Design -->
+            <div class="theme-card" onclick="window.location.href='index.html'">
+                <div class="theme-preview">
+                    <span class="theme-badge original">Original</span>
+                    <div style="width: 100%; height: 100%; background: linear-gradient(135deg, rgba(81, 43, 212, 0.3) 0%, rgba(0, 89, 156, 0.3) 100%); display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                        💼
+                    </div>
+                </div>
+                <div class="theme-info">
+                    <h3 class="theme-title">Classic Developer</h3>
+                    <p class="theme-description">
+                        The original design featuring a professional dark theme with purple (.NET) and blue (C++) colors. Clean and modern with smooth animations.
+                    </p>
+                    <div class="theme-features">
+                        <span class="feature-tag">Vanilla JS</span>
+                        <span class="feature-tag">Dark Theme</span>
+                        <span class="feature-tag">Responsive</span>
+                        <span class="feature-tag">Code Window</span>
+                    </div>
+                    <a href="index.html" class="theme-link">View Design →</a>
+                </div>
+            </div>
+
+            <!-- Design 1: Minimalist -->
+            <div class="theme-card" onclick="window.location.href='design-minimalist.html'">
+                <div class="theme-preview">
+                    <span class="theme-badge">New</span>
+                    <div style="width: 100%; height: 100%; background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%); display: flex; align-items: center; justify-content: center; font-size: 3rem; color: #512BD4;">
+                        ✨
+                    </div>
+                </div>
+                <div class="theme-info">
+                    <h3 class="theme-title">Modern Minimalist</h3>
+                    <p class="theme-description">
+                        Clean, light-themed design with Tailwind CSS. Features a minimalist approach with emphasis on typography and whitespace.
+                    </p>
+                    <div class="theme-features">
+                        <span class="feature-tag">Tailwind CSS</span>
+                        <span class="feature-tag">Light Theme</span>
+                        <span class="feature-tag">Typography-focused</span>
+                        <span class="feature-tag">Minimal</span>
+                    </div>
+                    <a href="design-minimalist.html" class="theme-link">View Design →</a>
+                </div>
+            </div>
+
+            <!-- Design 2: Terminal -->
+            <div class="theme-card" onclick="window.location.href='design-terminal.html'">
+                <div class="theme-preview">
+                    <span class="theme-badge">New</span>
+                    <div style="width: 100%; height: 100%; background: #0d0d0d; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: #00ff00; font-family: monospace;">
+                        &gt;_
+                    </div>
+                </div>
+                <div class="theme-info">
+                    <h3 class="theme-title">Terminal Hacker</h3>
+                    <p class="theme-description">
+                        Retro terminal-inspired design with glowing effects and matrix-style animations. Perfect for showcasing your developer skills.
+                    </p>
+                    <div class="theme-features">
+                        <span class="feature-tag">Retro Terminal</span>
+                        <span class="feature-tag">Glowing Effects</span>
+                        <span class="feature-tag">Animations</span>
+                        <span class="feature-tag">Monospace</span>
+                    </div>
+                    <a href="design-terminal.html" class="theme-link">View Design →</a>
+                </div>
+            </div>
+
+            <!-- Design 3: Bento Grid -->
+            <div class="theme-card" onclick="window.location.href='design-bento.html'">
+                <div class="theme-preview">
+                    <span class="theme-badge">New</span>
+                    <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #1e1e2e 0%, #2a2a3e 100%); display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                        📱
+                    </div>
+                </div>
+                <div class="theme-info">
+                    <h3 class="theme-title">Bento Grid</h3>
+                    <p class="theme-description">
+                        Modern card-based layout inspired by iOS design. Features a masonry grid layout with interactive cards and smooth transitions.
+                    </p>
+                    <div class="theme-features">
+                        <span class="feature-tag">CSS Grid</span>
+                        <span class="feature-tag">Card-based</span>
+                        <span class="feature-tag">Interactive</span>
+                        <span class="feature-tag">Modern</span>
+                    </div>
+                    <a href="design-bento.html" class="theme-link">View Design →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2>📝 About These Designs</h2>
+            <p>
+                All portfolio designs use the same data source (<code>config.js</code>) so you can easily switch between them without duplicating content. Simply edit <code>config.js</code> once, and all themes will reflect your changes.
+            </p>
+            <p>
+                Each design showcases different modern web technologies and design patterns:
+            </p>
+            <ul style="color: #8b949e; margin-left: 1.5rem; line-height: 1.8;">
+                <li><strong>Classic Developer:</strong> Vanilla JavaScript with custom CSS animations</li>
+                <li><strong>Modern Minimalist:</strong> Tailwind CSS utility-first framework</li>
+                <li><strong>Terminal Hacker:</strong> Custom CSS with retro terminal effects</li>
+                <li><strong>Bento Grid:</strong> Advanced CSS Grid with modern card layouts</li>
+            </ul>
+            <p style="margin-top: 1rem;">
+                All designs are fully responsive, optimized for performance, and ready for GitHub Pages deployment. Choose the one that best represents your personal brand as a .NET developer! 🚀
+            </p>
+        </div>
+    </div>
+</body>
+</html>

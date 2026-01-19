@@ -1,11 +1,24 @@
 # Portfolio Website
 
-A modern, responsive portfolio website for a .NET and C++ developer. Built with vanilla HTML, CSS, and JavaScript - no frameworks required!
+A collection of modern, responsive portfolio website designs for a .NET and C++ developer. Choose from 4 unique themes, all using the same data source!
+
+## 🎨 Multiple Design Options
+
+This portfolio includes **4 different design themes** that all use the same `config.js` file:
+
+1. **Classic Developer** (`index.html`) - Professional dark theme with smooth animations
+2. **Modern Minimalist** (`design-minimalist.html`) - Clean, light-themed design with Tailwind CSS
+3. **Terminal Hacker** (`design-terminal.html`) - Retro terminal-inspired with glowing effects
+4. **Bento Grid** (`design-bento.html`) - Modern card-based layout with iOS-inspired design
+
+👉 **[View All Themes](themes.html)** - Browse and switch between all available designs
 
 ## 🌟 Features
 
-- **Modern Design**: Dark theme with purple (.NET) and blue (C++) color scheme
-- **Fully Responsive**: Works perfectly on desktop, tablet, and mobile devices
+- **Multiple Themes**: 4 unique portfolio designs to choose from
+- **Single Data Source**: All themes use the same `config.js` file - edit once, update everywhere
+- **Modern Technologies**: Each theme showcases different modern web technologies
+- **Fully Responsive**: All designs work perfectly on desktop, tablet, and mobile devices
 - **Smooth Animations**: Engaging scroll animations and transitions
 - **Easy Customization**: All content managed through a single config file
 - **GitHub Pages Ready**: Optimized for free hosting on GitHub Pages
@@ -162,38 +175,74 @@ Edit CSS variables in `styles.css`:
 }
 ```
 
+## 🎨 Design Themes Explained
+
+### 1. Classic Developer (index.html)
+- **Style**: Professional dark theme
+- **Technologies**: Vanilla HTML, CSS, JavaScript
+- **Best for**: Traditional, corporate portfolios
+- **Features**: Code window visualization, smooth animations
+
+### 2. Modern Minimalist (design-minimalist.html)
+- **Style**: Clean, light-themed design
+- **Technologies**: Tailwind CSS
+- **Best for**: Modern, clean aesthetic lovers
+- **Features**: Typography-focused, whitespace emphasis, gradient buttons
+
+### 3. Terminal Hacker (design-terminal.html)
+- **Style**: Retro terminal-inspired
+- **Technologies**: Vanilla CSS with custom effects
+- **Best for**: Developers who love the command line
+- **Features**: Matrix rain effect, glowing text, monospace fonts, CRT screen effect
+
+### 4. Bento Grid (design-bento.html)
+- **Style**: Modern card-based layout
+- **Technologies**: Advanced CSS Grid
+- **Best for**: iOS/modern design enthusiasts
+- **Features**: Glassmorphism, interactive cards, smooth transitions
+
 ## 🎨 Color Scheme
 
-The site uses a professional color palette focused on .NET and C++ branding:
+All themes use a professional color palette focused on .NET and C++ branding:
 
 - **Primary (Purple)**: `#512BD4` - Represents .NET
 - **Secondary (Blue)**: `#00599C` - Represents C++
 - **Accent**: `#0078D7` - Microsoft blue
-- **Background**: Dark theme for a modern developer look
 
-## 📱 Responsive Breakpoints
+## 📱 Responsive Design
 
+All themes are fully responsive and work on:
 - **Desktop**: 1200px and above
 - **Tablet**: 768px - 1199px
 - **Mobile**: Below 768px
 
 ## 🛠️ Technology Stack
 
-- **HTML5**: Semantic markup
-- **CSS3**: Modern styling with CSS Grid and Flexbox
-- **Vanilla JavaScript**: No dependencies
-- **Google Fonts**: Inter font family
+Different themes use different technologies to showcase modern web development:
+
+- **Classic Developer**: Vanilla HTML5, CSS3, JavaScript
+- **Modern Minimalist**: Tailwind CSS (CDN)
+- **Terminal Hacker**: Custom CSS animations, Canvas API
+- **Bento Grid**: Advanced CSS Grid, Glassmorphism effects
+
+All themes use:
+- **Google Fonts**: Inter and Fira Code
+- **Single Data Source**: `config.js`
 
 ## 📄 File Structure
 
 ```
 portfolio/
-├── index.html          # Main HTML file
-├── styles.css          # All CSS styles
-├── script.js           # JavaScript functionality
-├── config.js           # Configuration and content
-├── .gitignore          # Git ignore file
-└── README.md           # This file
+├── index.html              # Classic Developer theme
+├── design-minimalist.html  # Modern Minimalist theme
+├── design-terminal.html    # Terminal Hacker theme
+├── design-bento.html       # Bento Grid theme
+├── themes.html             # Theme gallery/switcher
+├── styles.css              # Styles for Classic theme
+├── script.js               # JavaScript for Classic theme
+├── config.js               # Shared data for ALL themes
+├── .gitignore              # Git ignore file
+└── README.md               # This file
 ```
 
 ## 🔧 Browser Support
@@ -206,11 +255,29 @@ portfolio/
 
 ## 💡 Tips
 
-1. **Keep it updated**: Regularly update your projects and experience
-2. **Add real links**: Replace placeholder `#` links with actual URLs
-3. **Optimize images**: If you add images, optimize them for web
-4. **Test responsiveness**: Check your site on different devices
-5. **Use analytics**: Consider adding Google Analytics to track visitors
+1. **Choose your theme**: Visit `themes.html` to see all designs and pick your favorite
+2. **Single source of truth**: Edit `config.js` once to update ALL themes
+3. **Keep it updated**: Regularly update your projects and experience
+4. **Add real links**: Replace placeholder `#` links with actual URLs
+5. **Optimize images**: If you add images, optimize them for web
+6. **Test all themes**: Check each design on different devices
+7. **Mix and match**: Feel free to combine features from different themes
+8. **Use analytics**: Consider adding Google Analytics to track visitors
+
+## 🎯 Which Theme Should I Choose?
+
+- **For corporate/traditional jobs**: Classic Developer
+- **For modern startups**: Modern Minimalist or Bento Grid
+- **For developer-focused roles**: Terminal Hacker
+- **Not sure?**: Host all themes and let visitors choose!
+
+## 🚀 Deploying Multiple Themes
+
+You can deploy all themes to GitHub Pages:
+
+1. Set `themes.html` as your landing page, or
+2. Choose one theme as `index.html` and keep others accessible, or
+3. Deploy all themes and link to them in your resume/LinkedIn
 
 ## 🤝 Contributing
 

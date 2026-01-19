@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of a .NET and C++ Developer">
+    <title>Portfolio | .NET & C++ Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dotnet': '#512BD4',
+                        'cpp': '#00599C',
+                        'accent': '#0078D7'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #512BD4 0%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-4px);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #512BD4;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 font-sans">
+    <!-- Back to Themes -->
+    <div class="fixed top-4 left-4 z-50">
+        <a href="themes.html" class="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-lg hover:shadow-xl transition-shadow text-sm font-medium text-gray-700 hover:text-dotnet">
+            <span>←</span> All Themes
+        </a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-40 border-b border-gray-200">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold gradient-text">Portfolio</a>
+                <div class="hidden md:flex gap-8">
+                    <a href="#about" class="nav-link text-gray-600 hover:text-gray-900 font-medium">About</a>
+                    <a href="#skills" class="nav-link text-gray-600 hover:text-gray-900 font-medium">Skills</a>
+                    <a href="#projects" class="nav-link text-gray-600 hover:text-gray-900 font-medium">Projects</a>
+                    <a href="#experience" class="nav-link text-gray-600 hover:text-gray-900 font-medium">Experience</a>
+                    <a href="#contact" class="nav-link text-gray-600 hover:text-gray-900 font-medium">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center px-6 pt-20 pb-16">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="mb-6 text-gray-500 text-lg">Hello, I'm</div>
+            <h1 class="text-6xl md:text-7xl font-extrabold mb-4 gradient-text" id="developer-name">[Your Name]</h1>
+            <h2 class="text-3xl md:text-4xl font-semibold text-gray-800 mb-6">.NET & C++ Developer</h2>
+            <p class="text-xl text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed" id="hero-bio">
+                Passionate software engineer specializing in high-performance applications, 
+                backend systems, and enterprise solutions using .NET and C++.
+            </p>
+            <div class="flex gap-4 justify-center flex-wrap">
+                <a href="#projects" class="bg-gradient-to-r from-dotnet to-purple-600 text-white px-8 py-3 rounded-full font-semibold hover:shadow-xl transition-all hover:-translate-y-1">
+                    View Projects
+                </a>
+                <a href="#contact" class="bg-white text-gray-800 px-8 py-3 rounded-full font-semibold border-2 border-gray-300 hover:border-dotnet hover:shadow-lg transition-all">
+                    Get in Touch
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12 text-center gradient-text">About Me</h2>
+            <div class="prose prose-lg max-w-none">
+                <p class="text-gray-700 text-lg leading-relaxed mb-6" id="about-description">
+                    I'm a software developer with expertise in .NET and C++ development. 
+                    I enjoy building high-performance applications, working with low-level systems, 
+                    and creating scalable enterprise solutions. My passion lies in writing clean, 
+                    efficient code and solving complex technical challenges.
+                </p>
+                <p class="text-gray-700 text-lg leading-relaxed">
+                    With experience across the full development lifecycle, I bring a practical 
+                    approach to software engineering, focusing on quality, performance, and maintainability.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12 text-center gradient-text">Technical Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- .NET -->
+                <div class="bg-white rounded-2xl p-6 hover-lift hover:shadow-xl border border-gray-200">
+                    <div class="w-16 h-16 bg-gradient-to-br from-dotnet to-purple-600 rounded-xl flex items-center justify-center text-white text-2xl font-bold mb-4">
+                        .NET
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">.NET Ecosystem</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <span class="text-dotnet mr-2">▹</span>
+                            <span>C# & .NET Core/.NET 6+</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-dotnet mr-2">▹</span>
+                            <span>ASP.NET Core & Web API</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-dotnet mr-2">▹</span>
+                            <span>Entity Framework Core</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-dotnet mr-2">▹</span>
+                            <span>Blazor & SignalR</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- C++ -->
+                <div class="bg-white rounded-2xl p-6 hover-lift hover:shadow-xl border border-gray-200">
+                    <div class="w-16 h-16 bg-gradient-to-br from-cpp to-blue-500 rounded-xl flex items-center justify-center text-white text-xl font-bold mb-4">
+                        C++
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">C++ Development</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <span class="text-cpp mr-2">▹</span>
+                            <span>Modern C++ (11/14/17/20)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-cpp mr-2">▹</span>
+                            <span>STL & Boost Libraries</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-cpp mr-2">▹</span>
+                            <span>Memory Management</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-cpp mr-2">▹</span>
+                            <span>Performance Optimization</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Tools -->
+                <div class="bg-white rounded-2xl p-6 hover-lift hover:shadow-xl border border-gray-200">
+                    <div class="w-16 h-16 bg-gradient-to-br from-accent to-blue-400 rounded-xl flex items-center justify-center text-3xl mb-4">
+                        ⚙️
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">Tools & Practices</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <span class="text-accent mr-2">▹</span>
+                            <span>Git & Version Control</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-accent mr-2">▹</span>
+                            <span>Docker & Containers</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-accent mr-2">▹</span>
+                            <span>CI/CD Pipelines</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-accent mr-2">▹</span>
+                            <span>REST APIs & Microservices</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Databases -->
+                <div class="bg-white rounded-2xl p-6 hover-lift hover:shadow-xl border border-gray-200">
+                    <div class="w-16 h-16 bg-gradient-to-br from-gray-700 to-gray-500 rounded-xl flex items-center justify-center text-white text-2xl font-bold mb-4">
+                        DB
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">Data & Storage</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <span class="text-gray-700 mr-2">▹</span>
+                            <span>SQL Server & T-SQL</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-gray-700 mr-2">▹</span>
+                            <span>PostgreSQL & MySQL</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-gray-700 mr-2">▹</span>
+                            <span>Redis & Caching</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-gray-700 mr-2">▹</span>
+                            <span>Database Design</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-6 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12 text-center gradient-text">Featured Projects</h2>
+            <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Projects loaded from config.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 px-6">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12 text-center gradient-text">Experience</h2>
+            <div id="experience-container" class="space-y-8">
+                <!-- Experience loaded from config.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6 bg-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-8 gradient-text">Get In Touch</h2>
+            <p class="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
+                I'm always interested in hearing about new opportunities and collaborations. 
+                Feel free to reach out!
+            </p>
+            <div id="contact-links" class="flex gap-6 justify-center flex-wrap">
+                <!-- Contact links loaded from config.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 text-center">
+        <p>&copy; <span id="current-year"></span> <span id="footer-name">[Your Name]</span>. Built with Tailwind CSS.</p>
+    </footer>
+
+    <script src="config.js"></script>
+    <script>
+        // Load content from config.js
+        document.addEventListener('DOMContentLoaded', () => {
+            loadPersonalInfo();
+            loadProjects();
+            loadExperience();
+            loadContactLinks();
+            setCurrentYear();
+        });
+
+        function loadPersonalInfo() {
+            document.getElementById('developer-name').textContent = CONFIG.name;
+            document.getElementById('hero-bio').textContent = CONFIG.bio;
+            document.getElementById('about-description').textContent = CONFIG.aboutDescription;
+            document.getElementById('footer-name').textContent = CONFIG.name;
+        }
+
+        function loadProjects() {
+            const container = document.getElementById('projects-container');
+            container.innerHTML = '';
+            
+            CONFIG.projects.forEach(project => {
+                const card = document.createElement('div');
+                card.className = 'bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 hover-lift hover:shadow-xl border border-gray-200 flex flex-col';
+                
+                card.innerHTML = `
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">${project.title}</h3>
+                    <p class="text-gray-600 mb-4 flex-grow">${project.description}</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        ${project.technologies.map(tech => 
+                            `<span class="bg-purple-100 text-dotnet px-3 py-1 rounded-full text-sm font-medium">${tech}</span>`
+                        ).join('')}
+                    </div>
+                    <div class="flex gap-4">
+                        ${project.github !== '#' ? 
+                            `<a href="${project.github}" class="text-dotnet hover:text-purple-700 font-semibold" target="_blank">GitHub →</a>` : ''}
+                        ${project.demo !== '#' ? 
+                            `<a href="${project.demo}" class="text-cpp hover:text-blue-700 font-semibold" target="_blank">Demo →</a>` : ''}
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            });
+        }
+
+        function loadExperience() {
+            const container = document.getElementById('experience-container');
+            container.innerHTML = '';
+            
+            CONFIG.experience.forEach((exp, index) => {
+                const item = document.createElement('div');
+                item.className = 'relative pl-8 pb-8 border-l-2 border-dotnet';
+                
+                item.innerHTML = `
+                    <div class="absolute left-0 top-0 w-4 h-4 bg-dotnet rounded-full -translate-x-[9px]"></div>
+                    <div class="bg-white rounded-xl p-6 hover-lift hover:shadow-lg border border-gray-200">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">${exp.title}</h3>
+                        <div class="text-dotnet font-semibold mb-1">${exp.company}</div>
+                        <div class="text-gray-500 mb-4">${exp.period}</div>
+                        <p class="text-gray-600 leading-relaxed">${exp.description}</p>
+                    </div>
+                `;
+                
+                container.appendChild(item);
+            });
+        }
+
+        function loadContactLinks() {
+            const container = document.getElementById('contact-links');
+            container.innerHTML = '';
+            
+            CONFIG.contact.forEach(contact => {
+                const link = document.createElement('a');
+                link.href = contact.url;
+                link.target = '_blank';
+                link.className = 'flex items-center gap-3 bg-gradient-to-br from-gray-50 to-white px-6 py-4 rounded-2xl hover-lift hover:shadow-xl border border-gray-200 font-semibold text-gray-800';
+                link.innerHTML = `
+                    <span class="text-2xl">${contact.icon}</span>
+                    <span>${contact.name}</span>
+                `;
+                container.appendChild(link);
+            });
+        }
+
+        function setCurrentYear() {
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
