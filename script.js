@@ -181,23 +181,8 @@ function loadContactLinks() {
 
 // Initialize scroll animations
 function initializeAnimations() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
-            }
-        });
-    }, observerOptions);
-
-    // Observe all sections
-    document.querySelectorAll('section').forEach(section => {
-        observer.observe(section);
-    });
+    // Placeholder for future scroll-based animations
+    // Currently, animations are handled via CSS on page load
 }
 
 // Set current year in footer
@@ -229,7 +214,7 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
-        if (hamburger.classList.contains('active')) {
+        if (hamburger && hamburger.classList.contains('active')) {
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
         }
@@ -256,11 +241,4 @@ if ('IntersectionObserver' in window) {
     });
 }
 
-// Add print styles support
-window.addEventListener('beforeprint', () => {
-    document.body.classList.add('printing');
-});
-
-window.addEventListener('afterprint', () => {
-    document.body.classList.remove('printing');
-});
+// Print support is handled via CSS @media print rules
