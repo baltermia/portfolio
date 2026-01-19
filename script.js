@@ -316,78 +316,66 @@ function initWaveBackground() {
     const waves = [
         {
             baseAmplitude: 50,
-            amplitude: 50,
             frequency: 0.012,
             speed: 0.035,
             offset: 0,
             baseColor: { r: 81, g: 43, b: 212 },
             baseOpacity: 0.15,
-            opacity: 0.15,
             opacitySpeed: 0.008,
             amplitudeVariation: 0.005,
             frequencyVariation: 0.003
         },
         {
             baseAmplitude: 70,
-            amplitude: 70,
             frequency: 0.008,
             speed: 0.018,
             offset: Math.PI * 0.4,
             baseColor: { r: 124, g: 58, b: 237 },
             baseOpacity: 0.12,
-            opacity: 0.12,
             opacitySpeed: 0.012,
             amplitudeVariation: 0.007,
             frequencyVariation: 0.004
         },
         {
             baseAmplitude: 35,
-            amplitude: 35,
             frequency: 0.020,
             speed: 0.045,
             offset: Math.PI * 0.7,
             baseColor: { r: 147, g: 51, b: 234 },
             baseOpacity: 0.18,
-            opacity: 0.18,
             opacitySpeed: 0.015,
             amplitudeVariation: 0.006,
             frequencyVariation: 0.005
         },
         {
             baseAmplitude: 45,
-            amplitude: 45,
             frequency: 0.015,
             speed: 0.022,
             offset: Math.PI,
             baseColor: { r: 0, g: 89, b: 156 },
             baseOpacity: 0.20,
-            opacity: 0.20,
             opacitySpeed: 0.010,
             amplitudeVariation: 0.004,
             frequencyVariation: 0.006
         },
         {
             baseAmplitude: 60,
-            amplitude: 60,
             frequency: 0.010,
             speed: 0.028,
             offset: Math.PI * 1.3,
             baseColor: { r: 0, g: 120, b: 215 },
             baseOpacity: 0.16,
-            opacity: 0.16,
             opacitySpeed: 0.009,
             amplitudeVariation: 0.008,
             frequencyVariation: 0.003
         },
         {
             baseAmplitude: 40,
-            amplitude: 40,
             frequency: 0.018,
             speed: 0.040,
             offset: Math.PI * 1.8,
             baseColor: { r: 30, g: 100, b: 200 },
             baseOpacity: 0.14,
-            opacity: 0.14,
             opacitySpeed: 0.011,
             amplitudeVariation: 0.009,
             frequencyVariation: 0.007
@@ -423,10 +411,10 @@ function initWaveBackground() {
         
         // Add subtle variation to amplitude and frequency for organic feel
         const amplitudeNoise = Math.sin(time * wave.amplitudeVariation) * 15;
-        const currentAmplitude = wave.amplitude + amplitudeNoise;
+        const currentAmplitude = wave.baseAmplitude + amplitudeNoise;
         
         // Vary opacity over time for pulsing effect
-        wave.opacity = wave.baseOpacity + Math.sin(time * wave.opacitySpeed) * 0.08;
+        const currentOpacity = wave.baseOpacity + Math.sin(time * wave.opacitySpeed) * 0.08;
         
         // Calculate wave points with variation
         const points = [];
@@ -441,11 +429,11 @@ function initWaveBackground() {
         // Create dynamic gradient based on current opacity
         const { r, g, b } = wave.baseColor;
         const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-        gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${wave.opacity * 0.8})`);
-        gradient.addColorStop(0.5, `rgba(${r}, ${g}, ${b}, ${wave.opacity})`);
-        gradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, ${wave.opacity * 0.8})`);
+        gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${currentOpacity * 0.8})`);
+        gradient.addColorStop(0.5, `rgba(${r}, ${g}, ${b}, ${currentOpacity})`);
+        gradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, ${currentOpacity * 0.8})`);
         
-        // Draw the wave line stroke with dynamic opacity
+        // Draw the wave line stroke with dynamic opacity (clamped to max 1.0)
         ctx.beginPath();
         points.forEach((point, index) => {
             if (index === 0) {
@@ -454,7 +442,7 @@ function initWaveBackground() {
                 ctx.lineTo(point.x, point.y);
             }
         });
-        ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${wave.opacity * 1.5})`;
+        ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${Math.min(currentOpacity * 1.5, 1.0)})`;
         ctx.lineWidth = 1.5;
         ctx.stroke();
         
