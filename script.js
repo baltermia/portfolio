@@ -378,6 +378,7 @@ function initWaveBackground() {
     
     // Cache gradients for performance
     const gradientCache = new Map();
+    const OPACITY_QUANTIZATION_LEVELS = 20; // Quantize opacity to reduce cache entries
     
     // Set canvas size and create gradients
     function resizeCanvas() {
@@ -426,13 +427,12 @@ function initWaveBackground() {
         
         // Get or create gradient (cache by quantized opacity to avoid creating too many)
         const { r, g, b } = wave.baseColor;
-        const opacityKey = `${r}-${g}-${b}-${Math.round(currentOpacity * 20)}`;
+        const opacityKey = `${r}-${g}-${b}-${Math.round(currentOpacity * OPACITY_QUANTIZATION_LEVELS)}`;
         let gradient = gradientCache.get(opacityKey);
         
         if (!gradient) {
-            // Limit cache size before adding new entry
-            if (gradientCache.size >= 100) {
-                // Remove oldest entry (first in iteration order)
+            // Limit cache size before adding new entry (remove oldest entries if needed)
+            while (gradientCache.size >= 100) {
                 const firstKey = gradientCache.keys().next().value;
                 gradientCache.delete(firstKey);
             }
