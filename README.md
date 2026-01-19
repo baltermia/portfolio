@@ -72,7 +72,7 @@ Then visit `http://localhost:8000` in your browser.
 
 3. **Access your site:**
    - After a few minutes, your portfolio will be live!
-   - The URL will be: `https://baltermia.github.io/portfolio`
+   - The URL will be: `https://[your-username].github.io/portfolio`
 
 ### Option 2: Custom Domain (Optional)
 

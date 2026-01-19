@@ -92,31 +92,65 @@ function createProjectCard(project) {
     card.style.animation = 'fadeInUp 0.6s ease-out forwards';
     card.style.opacity = '0';
 
-    const techTags = project.technologies.map(tech => 
-        `<span class="tech-tag">${tech}</span>`
-    ).join('');
+    const projectHeader = document.createElement('div');
+    projectHeader.className = 'project-header';
 
-    const links = [];
+    const projectTitle = document.createElement('h3');
+    projectTitle.className = 'project-title';
+    projectTitle.textContent = project.title;
+
+    const projectDescription = document.createElement('p');
+    projectDescription.className = 'project-description';
+    projectDescription.textContent = project.description;
+
+    const techContainer = document.createElement('div');
+    techContainer.className = 'project-tech';
+    project.technologies.forEach(tech => {
+        const techTag = document.createElement('span');
+        techTag.className = 'tech-tag';
+        techTag.textContent = tech;
+        techContainer.appendChild(techTag);
+    });
+
+    projectHeader.appendChild(projectTitle);
+    projectHeader.appendChild(projectDescription);
+    projectHeader.appendChild(techContainer);
+
+    const linksContainer = document.createElement('div');
+    linksContainer.className = 'project-links';
+
+    let hasLinks = false;
     if (project.github && project.github !== '#') {
-        links.push(`<a href="${project.github}" class="project-link" target="_blank" rel="noopener noreferrer">GitHub →</a>`);
+        const githubLink = document.createElement('a');
+        githubLink.href = project.github;
+        githubLink.className = 'project-link';
+        githubLink.target = '_blank';
+        githubLink.rel = 'noopener noreferrer';
+        githubLink.textContent = 'GitHub →';
+        linksContainer.appendChild(githubLink);
+        hasLinks = true;
     }
     if (project.demo && project.demo !== '#') {
-        links.push(`<a href="${project.demo}" class="project-link" target="_blank" rel="noopener noreferrer">Live Demo →</a>`);
+        const demoLink = document.createElement('a');
+        demoLink.href = project.demo;
+        demoLink.className = 'project-link';
+        demoLink.target = '_blank';
+        demoLink.rel = 'noopener noreferrer';
+        demoLink.textContent = 'Live Demo →';
+        linksContainer.appendChild(demoLink);
+        hasLinks = true;
     }
-    if (links.length === 0) {
-        links.push(`<span class="project-link" style="color: var(--text-secondary); cursor: default;">Links Coming Soon</span>`);
+    if (!hasLinks) {
+        const placeholderSpan = document.createElement('span');
+        placeholderSpan.className = 'project-link';
+        placeholderSpan.style.color = 'var(--text-secondary)';
+        placeholderSpan.style.cursor = 'default';
+        placeholderSpan.textContent = 'Links Coming Soon';
+        linksContainer.appendChild(placeholderSpan);
     }
 
-    card.innerHTML = `
-        <div class="project-header">
-            <h3 class="project-title">${project.title}</h3>
-            <p class="project-description">${project.description}</p>
-            <div class="project-tech">${techTags}</div>
-        </div>
-        <div class="project-links">
-            ${links.join('')}
-        </div>
-    `;
+    card.appendChild(projectHeader);
+    card.appendChild(linksContainer);
 
     return card;
 }
@@ -142,15 +176,35 @@ function createTimelineItem(exp) {
     item.style.animation = 'fadeInUp 0.6s ease-out forwards';
     item.style.opacity = '0';
 
-    item.innerHTML = `
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-            <h3 class="timeline-title">${exp.title}</h3>
-            <div class="timeline-company">${exp.company}</div>
-            <div class="timeline-period">${exp.period}</div>
-            <p class="timeline-description">${exp.description}</p>
-        </div>
-    `;
+    const timelineDot = document.createElement('div');
+    timelineDot.className = 'timeline-dot';
+
+    const timelineContent = document.createElement('div');
+    timelineContent.className = 'timeline-content';
+
+    const timelineTitle = document.createElement('h3');
+    timelineTitle.className = 'timeline-title';
+    timelineTitle.textContent = exp.title;
+
+    const timelineCompany = document.createElement('div');
+    timelineCompany.className = 'timeline-company';
+    timelineCompany.textContent = exp.company;
+
+    const timelinePeriod = document.createElement('div');
+    timelinePeriod.className = 'timeline-period';
+    timelinePeriod.textContent = exp.period;
+
+    const timelineDescription = document.createElement('p');
+    timelineDescription.className = 'timeline-description';
+    timelineDescription.textContent = exp.description;
+
+    timelineContent.appendChild(timelineTitle);
+    timelineContent.appendChild(timelineCompany);
+    timelineContent.appendChild(timelinePeriod);
+    timelineContent.appendChild(timelineDescription);
+
+    item.appendChild(timelineDot);
+    item.appendChild(timelineContent);
 
     return item;
 }
@@ -171,10 +225,17 @@ function loadContactLinks() {
         link.style.animation = 'fadeInUp 0.6s ease-out forwards';
         link.style.animationDelay = `${index * 0.1}s`;
         link.style.opacity = '0';
-        link.innerHTML = `
-            <span style="font-size: 1.5rem;">${contact.icon}</span>
-            <span>${contact.name}</span>
-        `;
+        
+        const iconSpan = document.createElement('span');
+        iconSpan.style.fontSize = '1.5rem';
+        iconSpan.textContent = contact.icon;
+        
+        const nameSpan = document.createElement('span');
+        nameSpan.textContent = contact.name;
+        
+        link.appendChild(iconSpan);
+        link.appendChild(nameSpan);
+        
         contactLinksContainer.appendChild(link);
     });
 }
