@@ -1,13 +1,13 @@
 // Configuration file - Edit this to update your portfolio content
 const CONFIG = {
     // Personal Information
-    name: "[Your Name]",
+    name: "Baltermia",
     title: ".NET & C++ Developer",
     bio: "Passionate software engineer specializing in high-performance applications, backend systems, and enterprise solutions using .NET and C++.",
-    aboutDescription: `I'm a software developer with expertise in .NET and C++ development. 
-        I enjoy building high-performance applications, working with low-level systems, 
-        and creating scalable enterprise solutions. My passion lies in writing clean, 
-        efficient code and solving complex technical challenges.`,
+    aboutDescription: `I'm a software developer with expertise in .NET development as well as C++ (although a bit rusty - pun intended). 
+        I enjoy building high-performance business applications and designing robust and scalable backend architectures. 
+        My passion lies in writing clean, efficient code to ensure maintainability and solving complex technical challenges.
+        I'm an architect, not a coder.`,
 
     // Projects - Add your projects here
     projects: [
@@ -64,15 +64,15 @@ const CONFIG = {
             description: "Leading development of enterprise-grade applications using .NET and C++. Architecting scalable solutions and mentoring junior developers."
         },
         {
-            title: "Software Developer",
-            company: "[Company Name]",
-            period: "[Start Date] - [End Date]",
+            title: "Software Engineer",
+            company: "esave AG",
+            period: "2023 - Today",
             description: "Developed and maintained backend services using ASP.NET Core and C++. Improved system performance by 40% through optimization."
         },
         {
-            title: "Junior Developer",
-            company: "[Company Name]",
-            period: "[Start Date] - [End Date]",
+            title: "Apprenticeship",
+            company: "Trumpf Schweiz AG",
+            period: "2019 - 2023",
             description: "Built web applications and APIs using .NET technologies. Collaborated with cross-functional teams in an Agile environment."
         }
     ],
@@ -81,23 +81,18 @@ const CONFIG = {
     contact: [
         {
             name: "GitHub",
-            url: "https://github.com/[your-username]",
+            url: "https://github.com/baltermia",
             icon: "📦"
         },
         {
             name: "LinkedIn",
-            url: "https://linkedin.com/in/[your-profile]",
+            url: "https://www.linkedin.com/in/baltermia-clopath-361a6b211/",
             icon: "💼"
         },
         {
             name: "Email",
-            url: "mailto:[your-email]@example.com",
+            url: "mailto:contact@clopath.com",
             icon: "✉️"
-        },
-        {
-            name: "Twitter",
-            url: "https://twitter.com/[your-handle]",
-            icon: "🐦"
         }
     ]
 };
