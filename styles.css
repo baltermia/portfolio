@@ -135,40 +135,187 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 3rem;
     padding: 120px 2rem 80px;
     background: var(--darker-bg);
     position: relative;
     overflow: hidden;
 }
 
+/* Wave animation layers - Apple-style desert dune effect */
+.wave-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70%;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.wave path {
+    fill: rgba(81, 43, 212, 0.15);
+}
+
+/* First wave - foreground, most visible */
+.wave-1 {
+    animation: wave-animation-1 25s ease-in-out infinite;
+    filter: blur(1px);
+    z-index: 4;
+}
+
+.wave-1 path {
+    fill: rgba(81, 43, 212, 0.12);
+}
+
+/* Second wave - slightly behind */
+.wave-2 {
+    animation: wave-animation-2 22s ease-in-out infinite;
+    animation-delay: -3s;
+    filter: blur(2px);
+    z-index: 3;
+}
+
+.wave-2 path {
+    fill: rgba(124, 58, 237, 0.15);
+}
+
+/* Third wave - middle layer */
+.wave-3 {
+    animation: wave-animation-3 28s ease-in-out infinite;
+    animation-delay: -6s;
+    filter: blur(3px);
+    z-index: 2;
+}
+
+.wave-3 path {
+    fill: rgba(0, 89, 156, 0.1);
+}
+
+/* Fourth wave - background, most blurred */
+.wave-4 {
+    animation: wave-animation-4 32s ease-in-out infinite;
+    animation-delay: -9s;
+    filter: blur(4px);
+    z-index: 1;
+}
+
+.wave-4 path {
+    fill: rgba(0, 120, 215, 0.08);
+}
+
+@keyframes wave-animation-1 {
+    0%, 100% {
+        transform: translateX(0) translateY(0) scaleY(1);
+    }
+    25% {
+        transform: translateX(-30px) translateY(-8px) scaleY(1.05);
+    }
+    50% {
+        transform: translateX(-50px) translateY(-15px) scaleY(1.1);
+    }
+    75% {
+        transform: translateX(-30px) translateY(-8px) scaleY(1.05);
+    }
+}
+
+@keyframes wave-animation-2 {
+    0%, 100% {
+        transform: translateX(0) translateY(0) scaleY(1);
+    }
+    25% {
+        transform: translateX(40px) translateY(-12px) scaleY(1.08);
+    }
+    50% {
+        transform: translateX(60px) translateY(-20px) scaleY(1.12);
+    }
+    75% {
+        transform: translateX(40px) translateY(-12px) scaleY(1.08);
+    }
+}
+
+@keyframes wave-animation-3 {
+    0%, 100% {
+        transform: translateX(0) translateY(0) scaleY(1);
+    }
+    25% {
+        transform: translateX(-35px) translateY(-15px) scaleY(1.06);
+    }
+    50% {
+        transform: translateX(-55px) translateY(-25px) scaleY(1.15);
+    }
+    75% {
+        transform: translateX(-35px) translateY(-15px) scaleY(1.06);
+    }
+}
+
+@keyframes wave-animation-4 {
+    0%, 100% {
+        transform: translateX(0) translateY(0) scaleY(1);
+    }
+    25% {
+        transform: translateX(45px) translateY(-18px) scaleY(1.1);
+    }
+    50% {
+        transform: translateX(70px) translateY(-30px) scaleY(1.2);
+    }
+    75% {
+        transform: translateX(45px) translateY(-18px) scaleY(1.1);
+    }
+}
+
 .hero::before {
     content: '';
     position: absolute;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(81, 43, 212, 0.15) 0%, transparent 70%);
-    top: -250px;
-    right: -250px;
-    border-radius: 50%;
-    animation: float 20s ease-in-out infinite;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80%;
+    background: 
+        linear-gradient(180deg, 
+            transparent 0%, 
+            rgba(81, 43, 212, 0.04) 40%,
+            rgba(81, 43, 212, 0.08) 70%,
+            rgba(0, 89, 156, 0.06) 100%);
+    filter: blur(80px);
+    z-index: 0;
 }
 
 .hero::after {
     content: '';
     position: absolute;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(0, 89, 156, 0.15) 0%, transparent 70%);
-    bottom: -200px;
-    left: -200px;
-    border-radius: 50%;
-    animation: float 15s ease-in-out infinite reverse;
+    inset: 0;
+    background-image: 
+        radial-gradient(ellipse at 15% 20%, rgba(81, 43, 212, 0.18) 0%, transparent 40%),
+        radial-gradient(ellipse at 85% 80%, rgba(0, 89, 156, 0.15) 0%, transparent 40%),
+        radial-gradient(ellipse at 50% 50%, rgba(124, 58, 237, 0.08) 0%, transparent 50%);
+    filter: blur(50px);
+    animation: subtleFloat 25s ease-in-out infinite;
+    z-index: 0;
 }
 
-@keyframes float {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    33% { transform: translate(30px, -30px) rotate(120deg); }
-    66% { transform: translate(-20px, 20px) rotate(240deg); }
+@keyframes subtleFloat {
+    0%, 100% { 
+        transform: translate(0, 0) scale(1); 
+        opacity: 0.9;
+    }
+    33% {
+        transform: translate(15px, -15px) scale(1.05);
+        opacity: 1;
+    }
+    66% {
+        transform: translate(-15px, 15px) scale(0.95);
+        opacity: 0.85;
+    }
 }
 
 .hero-content {
@@ -652,10 +799,13 @@ section {
         flex-direction: column;
         text-align: center;
         padding-top: 100px;
+        gap: 2rem;
     }
     
     .hero-visual {
-        margin-top: 2rem;
+        margin-top: 0;
+        width: 100%;
+        max-width: 100%;
     }
     
     .name {
