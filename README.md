@@ -1,13 +1,14 @@
 # Portfolio Website
 
-A modern, responsive portfolio website for a .NET and C++ developer. Built with vanilla HTML, CSS, and JavaScript - no frameworks required!
+A modern, responsive portfolio website for a .NET and C++ developer with dark/light mode support.
 
 ## 🌟 Features
 
-- **Modern Design**: Dark theme with purple (.NET) and blue (C++) color scheme
+- **Modern Minimalist Design**: Clean, elegant design with Tailwind CSS
+- **Dark/Light Mode**: Toggle between dark and light color schemes with preference persistence
 - **Fully Responsive**: Works perfectly on desktop, tablet, and mobile devices
 - **Smooth Animations**: Engaging scroll animations and transitions
-- **Easy Customization**: All content managed through a single config file
+- **Easy Customization**: All content managed through a single `config.js` file
 - **GitHub Pages Ready**: Optimized for free hosting on GitHub Pages
 - **Performance Optimized**: Fast loading with minimal dependencies
 - **Accessible**: Semantic HTML and keyboard navigation support
@@ -162,38 +163,45 @@ Edit CSS variables in `styles.css`:
 }
 ```
 
+## 🎨 Design
+
+The Modern Minimalist design features:
+- **Style**: Clean, elegant design with light and dark modes
+- **Technologies**: Tailwind CSS (CDN) with dark mode support
+- **Features**: Typography-focused, whitespace emphasis, gradient buttons, smooth transitions
+
 ## 🎨 Color Scheme
 
-The site uses a professional color palette focused on .NET and C++ branding:
+The portfolio uses a professional color palette focused on .NET and C++ branding:
 
 - **Primary (Purple)**: `#512BD4` - Represents .NET
 - **Secondary (Blue)**: `#00599C` - Represents C++
 - **Accent**: `#0078D7` - Microsoft blue
-- **Background**: Dark theme for a modern developer look
 
-## 📱 Responsive Breakpoints
+The design supports both light and dark color schemes with a toggle button in the top-right corner.
 
+## 📱 Responsive Design
+
+Fully responsive and works on:
 - **Desktop**: 1200px and above
 - **Tablet**: 768px - 1199px
 - **Mobile**: Below 768px
 
 ## 🛠️ Technology Stack
 
-- **HTML5**: Semantic markup
-- **CSS3**: Modern styling with CSS Grid and Flexbox
-- **Vanilla JavaScript**: No dependencies
+- **Tailwind CSS**: Utility-first CSS framework via CDN
+- **Vanilla JavaScript**: For theme toggling and dynamic content
 - **Google Fonts**: Inter font family
+- **LocalStorage**: Persists theme preference
 
 ## 📄 File Structure
 
 ```
 portfolio/
-├── index.html          # Main HTML file
-├── styles.css          # All CSS styles
-├── script.js           # JavaScript functionality
-├── config.js           # Configuration and content
-├── .gitignore          # Git ignore file
-└── README.md           # This file
+├── index.html    # Main portfolio page
+├── config.js     # Content configuration
+├── .gitignore    # Git ignore file
+└── README.md     # This file
 ```
 
 ## 🔧 Browser Support
@@ -206,11 +214,21 @@ portfolio/
 
 ## 💡 Tips
 
-1. **Keep it updated**: Regularly update your projects and experience
-2. **Add real links**: Replace placeholder `#` links with actual URLs
-3. **Optimize images**: If you add images, optimize them for web
-4. **Test responsiveness**: Check your site on different devices
-5. **Use analytics**: Consider adding Google Analytics to track visitors
+1. **Toggle dark/light mode**: Use the button in the top-right corner
+2. **Edit once**: Update `config.js` to change all content
+3. **Keep it updated**: Regularly update your projects and experience
+4. **Add real links**: Replace placeholder `#` links with actual URLs
+5. **Optimize images**: If you add images, optimize them for web
+6. **Test both modes**: Check the design in both light and dark mode on different devices
+7. **Use analytics**: Consider adding Google Analytics to track visitors
+
+## 🚀 Deploying to GitHub Pages
+
+1. Push your changes to the main branch
+2. Go to repository Settings → Pages
+3. Select the branch to deploy (usually `main`)
+4. Your portfolio will be available at `https://[username].github.io/[repository]`
+3. Deploy both themes and link to them in your resume/LinkedIn
 
 ## 🤝 Contributing
 
@@ -227,6 +245,14 @@ This project is open source and available under the MIT License.
 3. Add your real GitHub, LinkedIn, and other social links
 4. Deploy to GitHub Pages
 5. Share your portfolio with the world!
+
+## 🤝 Contributing
+
+Feel free to fork this project and customize it for your own portfolio!
+
+## 📄 License
+
+This project is open source and available under the MIT License.
 
 ---
 

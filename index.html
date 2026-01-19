@@ -5,168 +5,270 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portfolio of a .NET and C++ Developer">
     <title>Portfolio | .NET & C++ Developer</title>
-    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'dotnet': '#512BD4',
+                        'cpp': '#00599C',
+                        'accent': '#0078D7'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #512BD4 0%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-4px);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #512BD4;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Theme toggle button */
+        .theme-toggle {
+            width: 60px;
+            height: 30px;
+            background: #e5e7eb;
+            border-radius: 30px;
+            position: relative;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .dark .theme-toggle {
+            background: #374151;
+        }
+
+        .theme-toggle-circle {
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            transition: transform 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .dark .theme-toggle-circle {
+            transform: translateX(30px);
+        }
+    </style>
 </head>
-<body>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 font-sans transition-colors duration-300">
+    <!-- Theme Toggle -->
+    <div class="fixed top-4 right-4 z-50">
+        <div class="theme-toggle" onclick="toggleTheme()">
+            <div class="theme-toggle-circle">
+                <span class="dark:hidden">☀️</span>
+                <span class="hidden dark:inline">🌙</span>
+            </div>
+        </div>
+    </div>
+
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="nav-logo">Portfolio</a>
-            <ul class="nav-menu">
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+    <nav class="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md sticky top-0 z-40 border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold gradient-text">Portfolio</a>
+                <div class="hidden md:flex gap-8">
+                    <a href="#about" class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium">About</a>
+                    <a href="#skills" class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium">Skills</a>
+                    <a href="#projects" class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium">Projects</a>
+                    <a href="#experience" class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium">Experience</a>
+                    <a href="#contact" class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium">Contact</a>
+                </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="hero" class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">
-                <span class="greeting">Hi, I'm</span>
-                <span class="name" id="developer-name">[Your Name]</span>
-            </h1>
-            <h2 class="hero-subtitle">.NET & C++ Developer</h2>
-            <p class="hero-description" id="hero-bio">
+    <section class="min-h-screen flex items-center justify-center px-6 pt-20 pb-16">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="mb-6 text-gray-500 dark:text-gray-400 text-lg">Hello, I'm</div>
+            <h1 class="text-6xl md:text-7xl font-extrabold mb-4 gradient-text" id="developer-name">[Your Name]</h1>
+            <h2 class="text-3xl md:text-4xl font-semibold text-gray-800 dark:text-gray-200 mb-6">.NET & C++ Developer</h2>
+            <p class="text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed" id="hero-bio">
                 Passionate software engineer specializing in high-performance applications, 
                 backend systems, and enterprise solutions using .NET and C++.
             </p>
-            <div class="hero-cta">
-                <a href="#projects" class="btn btn-primary">View Projects</a>
-                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
-            </div>
-        </div>
-        <div class="hero-visual">
-            <div class="code-window">
-                <div class="window-header">
-                    <span class="dot red"></span>
-                    <span class="dot yellow"></span>
-                    <span class="dot green"></span>
-                </div>
-                <pre class="code-content"><code><span class="keyword">public class</span> <span class="class-name">Developer</span>
-{
-    <span class="keyword">public string</span> Name { <span class="keyword">get</span>; <span class="keyword">set</span>; }
-    <span class="keyword">public</span> List&lt;<span class="keyword">string</span>&gt; Skills { <span class="keyword">get</span>; <span class="keyword">set</span>; }
-    
-    <span class="keyword">public void</span> <span class="method">Code</span>()
-    {
-        <span class="comment">// Building amazing things...</span>
-    }
-}</code></pre>
+            <div class="flex gap-4 justify-center flex-wrap">
+                <a href="#projects" class="bg-gradient-to-r from-dotnet to-purple-600 text-white px-8 py-3 rounded-full font-semibold hover:shadow-xl transition-all hover:-translate-y-1">
+                    View Projects
+                </a>
+                <a href="#contact" class="bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-8 py-3 rounded-full font-semibold border-2 border-gray-300 dark:border-gray-600 hover:border-dotnet dark:hover:border-purple-500 hover:shadow-lg transition-all">
+                    Get in Touch
+                </a>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p id="about-description">
-                        I'm a software developer with expertise in .NET and C++ development. 
-                        I enjoy building high-performance applications, working with low-level systems, 
-                        and creating scalable enterprise solutions. My passion lies in writing clean, 
-                        efficient code and solving complex technical challenges.
-                    </p>
-                    <p>
-                        With experience across the full development lifecycle, I bring a practical 
-                        approach to software engineering, focusing on quality, performance, and maintainability.
-                    </p>
-                </div>
+    <section id="about" class="py-20 px-6 bg-white dark:bg-gray-900 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12 text-center gradient-text">About Me</h2>
+            <div class="prose prose-lg max-w-none">
+                <p class="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-6" id="about-description">
+                    I'm a software developer with expertise in .NET and C++ development. 
+                    I enjoy building high-performance applications, working with low-level systems, 
+                    and creating scalable enterprise solutions. My passion lies in writing clean, 
+                    efficient code and solving complex technical challenges.
+                </p>
+                <p class="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+                    With experience across the full development lifecycle, I bring a practical 
+                    approach to software engineering, focusing on quality, performance, and maintainability.
+                </p>
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-grid">
-                <!-- .NET Section -->
-                <div class="skill-category">
-                    <div class="skill-icon">
-                        <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-                            <rect width="64" height="64" rx="8" fill="#512BD4"/>
-                            <text x="32" y="44" font-size="32" font-weight="bold" fill="white" text-anchor="middle">.NET</text>
-                        </svg>
+    <section id="skills" class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12 text-center gradient-text">Technical Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- .NET -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 hover-lift hover:shadow-xl border border-gray-200 dark:border-gray-700 transition-colors duration-300">
+                    <div class="w-16 h-16 bg-gradient-to-br from-dotnet to-purple-600 rounded-xl flex items-center justify-center text-white text-2xl font-bold mb-4">
+                        .NET
                     </div>
-                    <h3>.NET Ecosystem</h3>
-                    <ul class="skill-list">
-                        <li>C# & .NET Core/.NET 6+</li>
-                        <li>ASP.NET Core & Web API</li>
-                        <li>Entity Framework Core</li>
-                        <li>Blazor & SignalR</li>
-                        <li>LINQ & Async Programming</li>
-                        <li>Unit Testing (xUnit, NUnit)</li>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">.NET Ecosystem</h3>
+                    <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                        <li class="flex items-start">
+                            <span class="text-dotnet mr-2">▹</span>
+                            <span>C# & .NET Core/.NET 6+</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-dotnet mr-2">▹</span>
+                            <span>ASP.NET Core & Web API</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-dotnet mr-2">▹</span>
+                            <span>Entity Framework Core</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-dotnet mr-2">▹</span>
+                            <span>Blazor & SignalR</span>
+                        </li>
                     </ul>
                 </div>
 
-                <!-- C++ Section -->
-                <div class="skill-category">
-                    <div class="skill-icon">
-                        <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-                            <rect width="64" height="64" rx="8" fill="#00599C"/>
-                            <text x="32" y="44" font-size="28" font-weight="bold" fill="white" text-anchor="middle">C++</text>
-                        </svg>
+                <!-- C++ -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 hover-lift hover:shadow-xl border border-gray-200 dark:border-gray-700 transition-colors duration-300">
+                    <div class="w-16 h-16 bg-gradient-to-br from-cpp to-blue-500 rounded-xl flex items-center justify-center text-white text-xl font-bold mb-4">
+                        C++
                     </div>
-                    <h3>C++ Development</h3>
-                    <ul class="skill-list">
-                        <li>Modern C++ (11/14/17/20)</li>
-                        <li>STL & Boost Libraries</li>
-                        <li>Memory Management</li>
-                        <li>Multi-threading & Concurrency</li>
-                        <li>Performance Optimization</li>
-                        <li>CMake & Build Systems</li>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">C++ Development</h3>
+                    <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                        <li class="flex items-start">
+                            <span class="text-cpp mr-2">▹</span>
+                            <span>Modern C++ (11/14/17/20)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-cpp mr-2">▹</span>
+                            <span>STL & Boost Libraries</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-cpp mr-2">▹</span>
+                            <span>Memory Management</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-cpp mr-2">▹</span>
+                            <span>Performance Optimization</span>
+                        </li>
                     </ul>
                 </div>
 
-                <!-- Tools & Technologies -->
-                <div class="skill-category">
-                    <div class="skill-icon">
-                        <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-                            <rect width="64" height="64" rx="8" fill="#0078D7"/>
-                            <text x="32" y="44" font-size="32" font-weight="bold" fill="white" text-anchor="middle">⚙️</text>
-                        </svg>
+                <!-- Tools -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 hover-lift hover:shadow-xl border border-gray-200 dark:border-gray-700 transition-colors duration-300">
+                    <div class="w-16 h-16 bg-gradient-to-br from-accent to-blue-400 rounded-xl flex items-center justify-center text-3xl mb-4">
+                        ⚙️
                     </div>
-                    <h3>Tools & Practices</h3>
-                    <ul class="skill-list">
-                        <li>Git & Version Control</li>
-                        <li>Visual Studio & VS Code</li>
-                        <li>Docker & Containers</li>
-                        <li>CI/CD Pipelines</li>
-                        <li>Agile/Scrum Methodology</li>
-                        <li>REST APIs & Microservices</li>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">Tools & Practices</h3>
+                    <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                        <li class="flex items-start">
+                            <span class="text-accent mr-2">▹</span>
+                            <span>Git & Version Control</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-accent mr-2">▹</span>
+                            <span>Docker & Containers</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-accent mr-2">▹</span>
+                            <span>CI/CD Pipelines</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-accent mr-2">▹</span>
+                            <span>REST APIs & Microservices</span>
+                        </li>
                     </ul>
                 </div>
 
                 <!-- Databases -->
-                <div class="skill-category">
-                    <div class="skill-icon">
-                        <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-                            <rect width="64" height="64" rx="8" fill="#336791"/>
-                            <text x="32" y="44" font-size="32" font-weight="bold" fill="white" text-anchor="middle">DB</text>
-                        </svg>
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 hover-lift hover:shadow-xl border border-gray-200 dark:border-gray-700 transition-colors duration-300">
+                    <div class="w-16 h-16 bg-gradient-to-br from-gray-700 to-gray-500 rounded-xl flex items-center justify-center text-white text-2xl font-bold mb-4">
+                        DB
                     </div>
-                    <h3>Data & Storage</h3>
-                    <ul class="skill-list">
-                        <li>SQL Server & T-SQL</li>
-                        <li>PostgreSQL & MySQL</li>
-                        <li>Redis & Caching</li>
-                        <li>MongoDB</li>
-                        <li>Database Design</li>
-                        <li>Query Optimization</li>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">Data & Storage</h3>
+                    <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                        <li class="flex items-start">
+                            <span class="text-gray-700 mr-2">▹</span>
+                            <span>SQL Server & T-SQL</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-gray-700 mr-2">▹</span>
+                            <span>PostgreSQL & MySQL</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-gray-700 mr-2">▹</span>
+                            <span>Redis & Caching</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-gray-700 mr-2">▹</span>
+                            <span>Database Design</span>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -174,49 +276,166 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid" id="projects-container">
-                <!-- Projects will be loaded from config.js -->
+    <section id="projects" class="py-20 px-6 bg-white dark:bg-gray-900 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12 text-center gradient-text">Featured Projects</h2>
+            <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Projects loaded from config.js -->
             </div>
         </div>
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <h2 class="section-title">Experience</h2>
-            <div class="timeline" id="experience-container">
-                <!-- Experience will be loaded from config.js -->
+    <section id="experience" class="py-20 px-6">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12 text-center gradient-text">Experience</h2>
+            <div id="experience-container" class="space-y-8">
+                <!-- Experience loaded from config.js -->
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content">
-                <p class="contact-description">
-                    I'm always interested in hearing about new opportunities and collaborations. 
-                    Feel free to reach out!
-                </p>
-                <div class="contact-links" id="contact-links">
-                    <!-- Contact links will be loaded from config.js -->
-                </div>
+    <section id="contact" class="py-20 px-6 bg-white dark:bg-gray-900 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-8 gradient-text">Get In Touch</h2>
+            <p class="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
+                I'm always interested in hearing about new opportunities and collaborations. 
+                Feel free to reach out!
+            </p>
+            <div id="contact-links" class="flex gap-6 justify-center flex-wrap">
+                <!-- Contact links loaded from config.js -->
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; <span id="current-year"></span> <span id="footer-name">[Your Name]</span>. Built with HTML, CSS & JavaScript.</p>
-        </div>
+    <footer class="bg-gray-900 dark:bg-gray-950 text-white py-8 text-center transition-colors duration-300">
+        <p>&copy; <span id="current-year"></span> <span id="footer-name">[Your Name]</span>. Built with Tailwind CSS.</p>
     </footer>
 
     <script src="config.js"></script>
-    <script src="script.js"></script>
+    <script>
+        // Load content from config.js
+        document.addEventListener('DOMContentLoaded', () => {
+            loadPersonalInfo();
+            loadProjects();
+            loadExperience();
+            loadContactLinks();
+            setCurrentYear();
+        });
+
+        function loadPersonalInfo() {
+            document.getElementById('developer-name').textContent = CONFIG.name;
+            document.getElementById('hero-bio').textContent = CONFIG.bio;
+            document.getElementById('about-description').textContent = CONFIG.aboutDescription;
+            document.getElementById('footer-name').textContent = CONFIG.name;
+        }
+
+        function loadProjects() {
+            const container = document.getElementById('projects-container');
+            container.innerHTML = '';
+            
+            CONFIG.projects.forEach(project => {
+                const card = document.createElement('div');
+                card.className = 'bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-700 rounded-2xl p-6 hover-lift hover:shadow-xl border border-gray-200 dark:border-gray-600 flex flex-col transition-colors duration-300';
+                
+                card.innerHTML = `
+                    <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-gray-200">${project.title}</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4 flex-grow">${project.description}</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        ${project.technologies.map(tech => 
+                            `<span class="bg-purple-100 dark:bg-purple-900/30 text-dotnet dark:text-purple-400 px-3 py-1 rounded-full text-sm font-medium">${tech}</span>`
+                        ).join('')}
+                    </div>
+                    <div class="flex gap-4">
+                        ${project.github !== '#' ? 
+                            `<a href="${project.github}" class="text-dotnet hover:text-purple-700 dark:hover:text-purple-400 font-semibold" target="_blank">GitHub →</a>` : ''}
+                        ${project.demo !== '#' ? 
+                            `<a href="${project.demo}" class="text-cpp hover:text-blue-700 dark:hover:text-blue-400 font-semibold" target="_blank">Demo →</a>` : ''}
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            });
+        }
+
+        function loadExperience() {
+            const container = document.getElementById('experience-container');
+            container.innerHTML = '';
+            
+            CONFIG.experience.forEach((exp, index) => {
+                const item = document.createElement('div');
+                item.className = 'relative pl-8 pb-8 border-l-2 border-dotnet';
+                
+                item.innerHTML = `
+                    <div class="absolute left-0 top-0 w-4 h-4 bg-dotnet rounded-full -translate-x-[9px]"></div>
+                    <div class="bg-white dark:bg-gray-800 rounded-xl p-6 hover-lift hover:shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-300">
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-2">${exp.title}</h3>
+                        <div class="text-dotnet dark:text-purple-400 font-semibold mb-1">${exp.company}</div>
+                        <div class="text-gray-500 dark:text-gray-400 mb-4">${exp.period}</div>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">${exp.description}</p>
+                    </div>
+                `;
+                
+                container.appendChild(item);
+            });
+        }
+
+        function loadContactLinks() {
+            const container = document.getElementById('contact-links');
+            container.innerHTML = '';
+            
+            CONFIG.contact.forEach(contact => {
+                const link = document.createElement('a');
+                link.href = contact.url;
+                link.target = '_blank';
+                link.className = 'flex items-center gap-3 bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-700 px-6 py-4 rounded-2xl hover-lift hover:shadow-xl border border-gray-200 dark:border-gray-600 font-semibold text-gray-800 dark:text-gray-200 transition-colors duration-300';
+                link.innerHTML = `
+                    <span class="text-2xl">${contact.icon}</span>
+                    <span>${contact.name}</span>
+                `;
+                container.appendChild(link);
+            });
+        }
+
+        function setCurrentYear() {
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        }
+
+        // Dark mode toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.classList.contains('dark') ? 'dark' : 'light';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            if (newTheme === 'dark') {
+                html.classList.add('dark');
+            } else {
+                html.classList.remove('dark');
+            }
+            
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Initialize theme from localStorage
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
