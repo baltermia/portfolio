@@ -1,25 +1,14 @@
 # Portfolio Website
 
-A collection of modern, responsive portfolio website designs for a .NET and C++ developer. Choose from 2 beautiful themes with dark/light mode support!
-
-## 🎨 Design Options
-
-This portfolio includes **2 different design themes** that both use the same `config.js` file and include dark/light mode toggles:
-
-1. **Modern Minimalist** (`design-minimalist.html`) - Clean design with Tailwind CSS, featuring light/dark mode toggle
-2. **Bento Grid** (`design-bento.html`) - Modern card-based layout with iOS-inspired design and light/dark mode toggle
-
-👉 **[View Theme Gallery](themes.html)** - Browse and switch between available designs
+A modern, responsive portfolio website for a .NET and C++ developer with dark/light mode support.
 
 ## 🌟 Features
 
-- **2 Beautiful Themes**: Modern Minimalist and Bento Grid designs
-- **Dark/Light Mode**: Both themes include toggles for dark and light color schemes
-- **Single Data Source**: Both themes use the same `config.js` file - edit once, update everywhere
-- **Modern Technologies**: Tailwind CSS and advanced CSS Grid
-- **Fully Responsive**: All designs work perfectly on desktop, tablet, and mobile devices
+- **Modern Minimalist Design**: Clean, elegant design with Tailwind CSS
+- **Dark/Light Mode**: Toggle between dark and light color schemes with preference persistence
+- **Fully Responsive**: Works perfectly on desktop, tablet, and mobile devices
 - **Smooth Animations**: Engaging scroll animations and transitions
-- **Easy Customization**: All content managed through a single config file
+- **Easy Customization**: All content managed through a single `config.js` file
 - **GitHub Pages Ready**: Optimized for free hosting on GitHub Pages
 - **Performance Optimized**: Fast loading with minimal dependencies
 - **Accessible**: Semantic HTML and keyboard navigation support
@@ -174,58 +163,45 @@ Edit CSS variables in `styles.css`:
 }
 ```
 
-## 🎨 Design Themes Explained
+## 🎨 Design
 
-### 1. Modern Minimalist (design-minimalist.html)
-- **Style**: Clean, elegant design with light/dark modes
-- **Technologies**: Tailwind CSS
-- **Best for**: Modern, clean aesthetic lovers
-- **Features**: Typography-focused, whitespace emphasis, gradient buttons, dark/light mode toggle
-
-### 2. Bento Grid (design-bento.html)
-- **Style**: Modern card-based layout with light/dark modes
-- **Technologies**: Advanced CSS Grid
-- **Best for**: iOS/modern design enthusiasts
-- **Features**: Glassmorphism, interactive cards, smooth transitions, dark/light mode toggle
+The Modern Minimalist design features:
+- **Style**: Clean, elegant design with light and dark modes
+- **Technologies**: Tailwind CSS (CDN) with dark mode support
+- **Features**: Typography-focused, whitespace emphasis, gradient buttons, smooth transitions
 
 ## 🎨 Color Scheme
 
-Both themes use a professional color palette focused on .NET and C++ branding:
+The portfolio uses a professional color palette focused on .NET and C++ branding:
 
 - **Primary (Purple)**: `#512BD4` - Represents .NET
 - **Secondary (Blue)**: `#00599C` - Represents C++
 - **Accent**: `#0078D7` - Microsoft blue
 
-Both themes support both light and dark color schemes with a toggle button.
+The design supports both light and dark color schemes with a toggle button in the top-right corner.
 
 ## 📱 Responsive Design
 
-Both themes are fully responsive and work on:
+Fully responsive and works on:
 - **Desktop**: 1200px and above
 - **Tablet**: 768px - 1199px
 - **Mobile**: Below 768px
 
 ## 🛠️ Technology Stack
 
-Different themes use different technologies to showcase modern web development:
-
-- **Modern Minimalist**: Tailwind CSS (CDN) with dark mode support
-- **Bento Grid**: Advanced CSS Grid with CSS variables for theming
-
-Both themes use:
-- **Google Fonts**: Inter
-- **Single Data Source**: `config.js`
+- **Tailwind CSS**: Utility-first CSS framework via CDN
+- **Vanilla JavaScript**: For theme toggling and dynamic content
+- **Google Fonts**: Inter font family
+- **LocalStorage**: Persists theme preference
 
 ## 📄 File Structure
 
 ```
 portfolio/
-├── design-minimalist.html  # Modern Minimalist theme
-├── design-bento.html       # Bento Grid theme
-├── themes.html             # Theme gallery/switcher
-├── config.js               # Shared data for all themes
-├── .gitignore              # Git ignore file
-└── README.md               # This file
+├── index.html    # Main portfolio page
+├── config.js     # Content configuration
+├── .gitignore    # Git ignore file
+└── README.md     # This file
 ```
 
 ## 🔧 Browser Support
@@ -238,27 +214,20 @@ portfolio/
 
 ## 💡 Tips
 
-1. **Choose your theme**: Visit `themes.html` to see both designs and pick your favorite
-2. **Toggle dark/light mode**: Both themes have a toggle button in the top-right corner
-3. **Single source of truth**: Edit `config.js` once to update both themes
-4. **Keep it updated**: Regularly update your projects and experience
-5. **Add real links**: Replace placeholder `#` links with actual URLs
-6. **Optimize images**: If you add images, optimize them for web
-7. **Test both modes**: Check each design in both light and dark mode on different devices
-8. **Use analytics**: Consider adding Google Analytics to track visitors
+1. **Toggle dark/light mode**: Use the button in the top-right corner
+2. **Edit once**: Update `config.js` to change all content
+3. **Keep it updated**: Regularly update your projects and experience
+4. **Add real links**: Replace placeholder `#` links with actual URLs
+5. **Optimize images**: If you add images, optimize them for web
+6. **Test both modes**: Check the design in both light and dark mode on different devices
+7. **Use analytics**: Consider adding Google Analytics to track visitors
 
-## 🎯 Which Theme Should I Choose?
+## 🚀 Deploying to GitHub Pages
 
-- **For clean, modern look**: Modern Minimalist
-- **For iOS-inspired design**: Bento Grid
-- **Not sure?**: Host both and let visitors choose via `themes.html`!
-
-## 🚀 Deploying Your Portfolio
-
-You can deploy to GitHub Pages:
-
-1. Set `themes.html` as your landing page, or
-2. Choose one theme as your main page and rename it to `index.html`, or
+1. Push your changes to the main branch
+2. Go to repository Settings → Pages
+3. Select the branch to deploy (usually `main`)
+4. Your portfolio will be available at `https://[username].github.io/[repository]`
 3. Deploy both themes and link to them in your resume/LinkedIn
 
 ## 🤝 Contributing
@@ -276,6 +245,14 @@ This project is open source and available under the MIT License.
 3. Add your real GitHub, LinkedIn, and other social links
 4. Deploy to GitHub Pages
 5. Share your portfolio with the world!
+
+## 🤝 Contributing
+
+Feel free to fork this project and customize it for your own portfolio!
+
+## 📄 License
+
+This project is open source and available under the MIT License.
 
 ---
 
