@@ -318,8 +318,18 @@ function initWaveBackground() {
         canvas.height = canvas.offsetHeight;
     }
     
+    // Throttle resize events for better performance
+    let resizeTimeout;
+    function throttledResize() {
+        if (resizeTimeout) return;
+        resizeTimeout = setTimeout(() => {
+            resizeCanvas();
+            resizeTimeout = null;
+        }, 100);
+    }
+    
     resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener('resize', throttledResize);
     
     // Wave configuration
     const waves = [
@@ -328,28 +338,36 @@ function initWaveBackground() {
             frequency: 0.02,
             speed: 0.02,
             offset: 0,
-            color: 'rgba(81, 43, 212, 0.3)' // Primary purple
+            color: 'rgba(81, 43, 212, 0.3)',
+            gradientColor: 'rgba(81, 43, 212, 0.4)',
+            strokeColor: 'rgba(81, 43, 212, 0.5)'
         },
         {
             amplitude: 40,
             frequency: 0.015,
             speed: 0.015,
             offset: Math.PI / 2,
-            color: 'rgba(124, 58, 237, 0.2)' // Lighter purple
+            color: 'rgba(124, 58, 237, 0.2)',
+            gradientColor: 'rgba(124, 58, 237, 0.3)',
+            strokeColor: 'rgba(124, 58, 237, 0.4)'
         },
         {
             amplitude: 25,
             frequency: 0.025,
             speed: 0.025,
             offset: Math.PI,
-            color: 'rgba(0, 89, 156, 0.25)' // C++ blue
+            color: 'rgba(0, 89, 156, 0.25)',
+            gradientColor: 'rgba(0, 89, 156, 0.35)',
+            strokeColor: 'rgba(0, 89, 156, 0.45)'
         },
         {
             amplitude: 35,
             frequency: 0.018,
             speed: 0.01,
             offset: Math.PI * 1.5,
-            color: 'rgba(0, 120, 215, 0.2)' // Accent blue
+            color: 'rgba(0, 120, 215, 0.2)',
+            gradientColor: 'rgba(0, 120, 215, 0.3)',
+            strokeColor: 'rgba(0, 120, 215, 0.4)'
         }
     ];
     
@@ -375,7 +393,7 @@ function initWaveBackground() {
         // Create gradient fill
         const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
         gradient.addColorStop(0, wave.color);
-        gradient.addColorStop(0.5, wave.color.replace('0.3)', '0.4)').replace('0.2)', '0.3)').replace('0.25)', '0.35)'));
+        gradient.addColorStop(0.5, wave.gradientColor);
         gradient.addColorStop(1, wave.color);
         
         // Complete the path for filling
@@ -387,7 +405,7 @@ function initWaveBackground() {
         ctx.fill();
         
         // Draw stroke for the wave line
-        ctx.strokeStyle = wave.color.replace('0.3)', '0.5)').replace('0.2)', '0.4)').replace('0.25)', '0.45)');
+        ctx.strokeStyle = wave.strokeColor;
         ctx.lineWidth = 2;
         ctx.stroke();
     }
@@ -408,17 +426,28 @@ function initWaveBackground() {
     
     animate();
     
-    // Cleanup on page unload
-    window.addEventListener('beforeunload', () => {
+    // Return cleanup function
+    return () => {
         if (animationFrameId) {
             cancelAnimationFrame(animationFrameId);
         }
-    });
+        window.removeEventListener('resize', throttledResize);
+    };
 }
 
 // Initialize wave background when DOM is loaded
+let waveCleanup = null;
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initWaveBackground);
+    document.addEventListener('DOMContentLoaded', () => {
+        waveCleanup = initWaveBackground();
+    });
 } else {
-    initWaveBackground();
+    waveCleanup = initWaveBackground();
 }
+
+// Cleanup on page unload
+window.addEventListener('beforeunload', () => {
+    if (waveCleanup) {
+        waveCleanup();
+    }
+});
