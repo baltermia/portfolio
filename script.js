@@ -303,3 +303,122 @@ if ('IntersectionObserver' in window) {
 }
 
 // Print support is handled via CSS @media print rules
+
+// Animated Wave Background
+function initWaveBackground() {
+    const canvas = document.getElementById('waveCanvas');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    let animationFrameId;
+    
+    // Set canvas size
+    function resizeCanvas() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+    }
+    
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    
+    // Wave configuration
+    const waves = [
+        {
+            amplitude: 30,
+            frequency: 0.02,
+            speed: 0.02,
+            offset: 0,
+            color: 'rgba(81, 43, 212, 0.3)' // Primary purple
+        },
+        {
+            amplitude: 40,
+            frequency: 0.015,
+            speed: 0.015,
+            offset: Math.PI / 2,
+            color: 'rgba(124, 58, 237, 0.2)' // Lighter purple
+        },
+        {
+            amplitude: 25,
+            frequency: 0.025,
+            speed: 0.025,
+            offset: Math.PI,
+            color: 'rgba(0, 89, 156, 0.25)' // C++ blue
+        },
+        {
+            amplitude: 35,
+            frequency: 0.018,
+            speed: 0.01,
+            offset: Math.PI * 1.5,
+            color: 'rgba(0, 120, 215, 0.2)' // Accent blue
+        }
+    ];
+    
+    let time = 0;
+    
+    function drawWave(wave, yOffset) {
+        ctx.beginPath();
+        
+        const centerY = canvas.height / 2 + yOffset;
+        
+        // Draw the wave
+        for (let x = 0; x < canvas.width; x++) {
+            const y = centerY + 
+                     Math.sin(x * wave.frequency + time * wave.speed + wave.offset) * wave.amplitude;
+            
+            if (x === 0) {
+                ctx.moveTo(x, y);
+            } else {
+                ctx.lineTo(x, y);
+            }
+        }
+        
+        // Create gradient fill
+        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        gradient.addColorStop(0, wave.color);
+        gradient.addColorStop(0.5, wave.color.replace('0.3)', '0.4)').replace('0.2)', '0.3)').replace('0.25)', '0.35)'));
+        gradient.addColorStop(1, wave.color);
+        
+        // Complete the path for filling
+        ctx.lineTo(canvas.width, canvas.height);
+        ctx.lineTo(0, canvas.height);
+        ctx.closePath();
+        
+        ctx.fillStyle = gradient;
+        ctx.fill();
+        
+        // Draw stroke for the wave line
+        ctx.strokeStyle = wave.color.replace('0.3)', '0.5)').replace('0.2)', '0.4)').replace('0.25)', '0.45)');
+        ctx.lineWidth = 2;
+        ctx.stroke();
+    }
+    
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        time += 1;
+        
+        // Draw each wave with different vertical offsets for layering
+        drawWave(waves[0], -100);
+        drawWave(waves[1], -50);
+        drawWave(waves[2], 50);
+        drawWave(waves[3], 100);
+        
+        animationFrameId = requestAnimationFrame(animate);
+    }
+    
+    animate();
+    
+    // Cleanup on page unload
+    window.addEventListener('beforeunload', () => {
+        if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+        }
+    });
+}
+
+// Initialize wave background when DOM is loaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initWaveBackground);
+} else {
+    initWaveBackground();
+}
