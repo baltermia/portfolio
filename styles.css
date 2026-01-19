@@ -166,7 +166,7 @@ body {
 /* First wave - slowest, most vibrant */
 .wave-1 {
     animation: smoothFlow1 30s ease-in-out infinite;
-    filter: blur(0px) brightness(1.1);
+    filter: brightness(1.1);
     z-index: 4;
 }
 
