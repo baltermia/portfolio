@@ -139,36 +139,60 @@ body {
     background: var(--darker-bg);
     position: relative;
     overflow: hidden;
+    gap: 3rem;
 }
 
+/* Animated background - Apple keynote style with irregular waves */
 .hero::before {
     content: '';
     position: absolute;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(81, 43, 212, 0.15) 0%, transparent 70%);
-    top: -250px;
-    right: -250px;
-    border-radius: 50%;
-    animation: float 20s ease-in-out infinite;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(124, 58, 237, 0.15), transparent),
+        radial-gradient(ellipse 60% 80% at 80% 50%, rgba(139, 92, 246, 0.1), transparent),
+        radial-gradient(ellipse 100% 80% at 20% 80%, rgba(168, 85, 247, 0.08), transparent),
+        radial-gradient(ellipse 90% 70% at 60% 110%, rgba(126, 34, 206, 0.12), transparent);
+    filter: blur(60px);
+    animation: waveMovement 25s ease-in-out infinite;
+    z-index: 0;
 }
 
 .hero::after {
     content: '';
     position: absolute;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(0, 89, 156, 0.15) 0%, transparent 70%);
-    bottom: -200px;
-    left: -200px;
-    border-radius: 50%;
-    animation: float 15s ease-in-out infinite reverse;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(ellipse 70% 90% at 10% 40%, rgba(147, 51, 234, 0.1), transparent),
+        radial-gradient(ellipse 80% 60% at 90% 20%, rgba(168, 85, 247, 0.08), transparent),
+        radial-gradient(ellipse 60% 70% at 40% 90%, rgba(192, 132, 252, 0.12), transparent);
+    filter: blur(80px);
+    animation: waveMovement 30s ease-in-out infinite reverse;
+    z-index: 0;
 }
 
-@keyframes float {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    33% { transform: translate(30px, -30px) rotate(120deg); }
-    66% { transform: translate(-20px, 20px) rotate(240deg); }
+@keyframes waveMovement {
+    0%, 100% { 
+        transform: translate(0%, 0%) scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    25% { 
+        transform: translate(-5%, 3%) scale(1.05) rotate(1deg);
+        opacity: 0.9;
+    }
+    50% { 
+        transform: translate(3%, -4%) scale(0.95) rotate(-1deg);
+        opacity: 0.95;
+    }
+    75% { 
+        transform: translate(-3%, 5%) scale(1.02) rotate(0.5deg);
+        opacity: 0.92;
+    }
 }
 
 .hero-content {
@@ -613,6 +637,34 @@ section {
 }
 
 /* Responsive Design */
+/* Fix overlap on medium-sized screens (tablet landscape to small desktop) */
+@media (max-width: 1100px) and (min-width: 769px) {
+    .hero {
+        gap: 2rem;
+        padding: 120px 1.5rem 80px;
+    }
+    
+    .hero-content {
+        max-width: 500px;
+    }
+    
+    .hero-visual {
+        max-width: 420px;
+    }
+    
+    .name {
+        font-size: 3rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.75rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+    }
+}
+
 @media (max-width: 768px) {
     .hamburger {
         display: flex;
