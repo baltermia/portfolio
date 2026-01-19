@@ -142,7 +142,7 @@ body {
     overflow: hidden;
 }
 
-/* Wave animation layers - Apple-style desert dune effect */
+/* Wave animation layers - Apple-style desert dunes effect */
 .wave-container {
     position: absolute;
     bottom: 0;
@@ -160,10 +160,6 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-}
-
-.wave path {
-    fill: rgba(81, 43, 212, 0.15);
 }
 
 /* First wave - foreground, most visible */
@@ -286,7 +282,7 @@ body {
             rgba(81, 43, 212, 0.04) 40%,
             rgba(81, 43, 212, 0.08) 70%,
             rgba(0, 89, 156, 0.06) 100%);
-    filter: blur(80px);
+    filter: blur(60px);
     z-index: 0;
 }
 
