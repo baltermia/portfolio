@@ -322,8 +322,7 @@ function initWaveBackground() {
             baseColor: { r: 81, g: 43, b: 212 },
             baseOpacity: 0.15,
             opacitySpeed: 0.008,
-            amplitudeVariation: 0.005,
-            frequencyVariation: 0.003
+            amplitudeVariation: 0.005
         },
         {
             baseAmplitude: 70,
@@ -333,8 +332,7 @@ function initWaveBackground() {
             baseColor: { r: 124, g: 58, b: 237 },
             baseOpacity: 0.12,
             opacitySpeed: 0.012,
-            amplitudeVariation: 0.007,
-            frequencyVariation: 0.004
+            amplitudeVariation: 0.007
         },
         {
             baseAmplitude: 35,
@@ -344,8 +342,7 @@ function initWaveBackground() {
             baseColor: { r: 147, g: 51, b: 234 },
             baseOpacity: 0.18,
             opacitySpeed: 0.015,
-            amplitudeVariation: 0.006,
-            frequencyVariation: 0.005
+            amplitudeVariation: 0.006
         },
         {
             baseAmplitude: 45,
@@ -355,8 +352,7 @@ function initWaveBackground() {
             baseColor: { r: 0, g: 89, b: 156 },
             baseOpacity: 0.20,
             opacitySpeed: 0.010,
-            amplitudeVariation: 0.004,
-            frequencyVariation: 0.006
+            amplitudeVariation: 0.004
         },
         {
             baseAmplitude: 60,
@@ -366,8 +362,7 @@ function initWaveBackground() {
             baseColor: { r: 0, g: 120, b: 215 },
             baseOpacity: 0.16,
             opacitySpeed: 0.009,
-            amplitudeVariation: 0.008,
-            frequencyVariation: 0.003
+            amplitudeVariation: 0.008
         },
         {
             baseAmplitude: 40,
@@ -377,8 +372,7 @@ function initWaveBackground() {
             baseColor: { r: 30, g: 100, b: 200 },
             baseOpacity: 0.14,
             opacitySpeed: 0.011,
-            amplitudeVariation: 0.009,
-            frequencyVariation: 0.007
+            amplitudeVariation: 0.009
         }
     ];
     
@@ -387,7 +381,8 @@ function initWaveBackground() {
         canvas.width = canvas.offsetWidth;
         canvas.height = canvas.offsetHeight;
         
-        // Gradients will be created dynamically in drawWave based on current opacity
+        // Clear gradient cache on resize as canvas dimensions changed
+        gradientCache.clear();
     }
     
     // Throttle resize events for better performance
@@ -405,6 +400,9 @@ function initWaveBackground() {
     
     let time = 0;
     
+    // Cache gradients for performance
+    const gradientCache = new Map();
+    
     function drawWave(wave, yOffset) {
         const centerY = canvas.height / 2 + yOffset;
         const step = 3; // Draw every 3 pixels for better performance
@@ -413,8 +411,8 @@ function initWaveBackground() {
         const amplitudeNoise = Math.sin(time * wave.amplitudeVariation) * 15;
         const currentAmplitude = wave.baseAmplitude + amplitudeNoise;
         
-        // Vary opacity over time for pulsing effect
-        const currentOpacity = wave.baseOpacity + Math.sin(time * wave.opacitySpeed) * 0.08;
+        // Vary opacity over time for pulsing effect (clamped to valid range)
+        const currentOpacity = Math.max(0, Math.min(1, wave.baseOpacity + Math.sin(time * wave.opacitySpeed) * 0.08));
         
         // Calculate wave points with variation
         const points = [];
@@ -426,12 +424,24 @@ function initWaveBackground() {
             points.push({ x, y });
         }
         
-        // Create dynamic gradient based on current opacity
+        // Get or create gradient (cache by quantized opacity to avoid creating too many)
         const { r, g, b } = wave.baseColor;
-        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-        gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${currentOpacity * 0.8})`);
-        gradient.addColorStop(0.5, `rgba(${r}, ${g}, ${b}, ${currentOpacity})`);
-        gradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, ${currentOpacity * 0.8})`);
+        const opacityKey = `${r}-${g}-${b}-${Math.round(currentOpacity * 20)}`;
+        let gradient = gradientCache.get(opacityKey);
+        
+        if (!gradient) {
+            gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${currentOpacity * 0.8})`);
+            gradient.addColorStop(0.5, `rgba(${r}, ${g}, ${b}, ${currentOpacity})`);
+            gradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, ${currentOpacity * 0.8})`);
+            gradientCache.set(opacityKey, gradient);
+            
+            // Limit cache size to prevent memory issues
+            if (gradientCache.size > 100) {
+                const firstKey = gradientCache.keys().next().value;
+                gradientCache.delete(firstKey);
+            }
+        }
         
         // Draw the wave line stroke with dynamic opacity (clamped to max 1.0)
         ctx.beginPath();
