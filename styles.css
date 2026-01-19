@@ -157,6 +157,7 @@ body {
         radial-gradient(ellipse 90% 70% at 60% 110%, rgba(126, 34, 206, 0.12), transparent);
     filter: blur(60px);
     animation: waveMovement 25s ease-in-out infinite;
+    will-change: transform;
     z-index: 0;
 }
 
@@ -173,9 +174,16 @@ body {
         radial-gradient(ellipse 60% 70% at 40% 90%, rgba(192, 132, 252, 0.12), transparent);
     filter: blur(80px);
     animation: waveMovement 30s ease-in-out infinite reverse;
+    will-change: transform;
     z-index: 0;
 }
 
+/* Slow wave animation mimicking Apple keynote style
+ * - Subtle translate movements create flowing effect
+ * - Scale variations add depth and organic feel
+ * - Small rotations prevent static appearance
+ * - Opacity shifts enhance the dreamy, unfocused aesthetic
+ */
 @keyframes waveMovement {
     0%, 100% { 
         transform: translate(0%, 0%) scale(1) rotate(0deg);
