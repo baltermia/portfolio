@@ -1,23 +1,22 @@
 # Portfolio Website
 
-A collection of modern, responsive portfolio website designs for a .NET and C++ developer. Choose from 4 unique themes, all using the same data source!
+A collection of modern, responsive portfolio website designs for a .NET and C++ developer. Choose from 2 beautiful themes with dark/light mode support!
 
-## 🎨 Multiple Design Options
+## 🎨 Design Options
 
-This portfolio includes **4 different design themes** that all use the same `config.js` file:
+This portfolio includes **2 different design themes** that both use the same `config.js` file and include dark/light mode toggles:
 
-1. **Classic Developer** (`index.html`) - Professional dark theme with smooth animations
-2. **Modern Minimalist** (`design-minimalist.html`) - Clean, light-themed design with Tailwind CSS
-3. **Terminal Hacker** (`design-terminal.html`) - Retro terminal-inspired with glowing effects
-4. **Bento Grid** (`design-bento.html`) - Modern card-based layout with iOS-inspired design
+1. **Modern Minimalist** (`design-minimalist.html`) - Clean design with Tailwind CSS, featuring light/dark mode toggle
+2. **Bento Grid** (`design-bento.html`) - Modern card-based layout with iOS-inspired design and light/dark mode toggle
 
-👉 **[View All Themes](themes.html)** - Browse and switch between all available designs
+👉 **[View Theme Gallery](themes.html)** - Browse and switch between available designs
 
 ## 🌟 Features
 
-- **Multiple Themes**: 4 unique portfolio designs to choose from
-- **Single Data Source**: All themes use the same `config.js` file - edit once, update everywhere
-- **Modern Technologies**: Each theme showcases different modern web technologies
+- **2 Beautiful Themes**: Modern Minimalist and Bento Grid designs
+- **Dark/Light Mode**: Both themes include toggles for dark and light color schemes
+- **Single Data Source**: Both themes use the same `config.js` file - edit once, update everywhere
+- **Modern Technologies**: Tailwind CSS and advanced CSS Grid
 - **Fully Responsive**: All designs work perfectly on desktop, tablet, and mobile devices
 - **Smooth Animations**: Engaging scroll animations and transitions
 - **Easy Customization**: All content managed through a single config file
@@ -177,41 +176,31 @@ Edit CSS variables in `styles.css`:
 
 ## 🎨 Design Themes Explained
 
-### 1. Classic Developer (index.html)
-- **Style**: Professional dark theme
-- **Technologies**: Vanilla HTML, CSS, JavaScript
-- **Best for**: Traditional, corporate portfolios
-- **Features**: Code window visualization, smooth animations
-
-### 2. Modern Minimalist (design-minimalist.html)
-- **Style**: Clean, light-themed design
+### 1. Modern Minimalist (design-minimalist.html)
+- **Style**: Clean, elegant design with light/dark modes
 - **Technologies**: Tailwind CSS
 - **Best for**: Modern, clean aesthetic lovers
-- **Features**: Typography-focused, whitespace emphasis, gradient buttons
+- **Features**: Typography-focused, whitespace emphasis, gradient buttons, dark/light mode toggle
 
-### 3. Terminal Hacker (design-terminal.html)
-- **Style**: Retro terminal-inspired
-- **Technologies**: Vanilla CSS with custom effects
-- **Best for**: Developers who love the command line
-- **Features**: Matrix rain effect, glowing text, monospace fonts, CRT screen effect
-
-### 4. Bento Grid (design-bento.html)
-- **Style**: Modern card-based layout
+### 2. Bento Grid (design-bento.html)
+- **Style**: Modern card-based layout with light/dark modes
 - **Technologies**: Advanced CSS Grid
 - **Best for**: iOS/modern design enthusiasts
-- **Features**: Glassmorphism, interactive cards, smooth transitions
+- **Features**: Glassmorphism, interactive cards, smooth transitions, dark/light mode toggle
 
 ## 🎨 Color Scheme
 
-All themes use a professional color palette focused on .NET and C++ branding:
+Both themes use a professional color palette focused on .NET and C++ branding:
 
 - **Primary (Purple)**: `#512BD4` - Represents .NET
 - **Secondary (Blue)**: `#00599C` - Represents C++
 - **Accent**: `#0078D7` - Microsoft blue
 
+Both themes support both light and dark color schemes with a toggle button.
+
 ## 📱 Responsive Design
 
-All themes are fully responsive and work on:
+Both themes are fully responsive and work on:
 - **Desktop**: 1200px and above
 - **Tablet**: 768px - 1199px
 - **Mobile**: Below 768px
@@ -220,27 +209,21 @@ All themes are fully responsive and work on:
 
 Different themes use different technologies to showcase modern web development:
 
-- **Classic Developer**: Vanilla HTML5, CSS3, JavaScript
-- **Modern Minimalist**: Tailwind CSS (CDN)
-- **Terminal Hacker**: Custom CSS animations, Canvas API
-- **Bento Grid**: Advanced CSS Grid, Glassmorphism effects
+- **Modern Minimalist**: Tailwind CSS (CDN) with dark mode support
+- **Bento Grid**: Advanced CSS Grid with CSS variables for theming
 
-All themes use:
-- **Google Fonts**: Inter and Fira Code
+Both themes use:
+- **Google Fonts**: Inter
 - **Single Data Source**: `config.js`
 
 ## 📄 File Structure
 
 ```
 portfolio/
-├── index.html              # Classic Developer theme
 ├── design-minimalist.html  # Modern Minimalist theme
-├── design-terminal.html    # Terminal Hacker theme
 ├── design-bento.html       # Bento Grid theme
 ├── themes.html             # Theme gallery/switcher
-├── styles.css              # Styles for Classic theme
-├── script.js               # JavaScript for Classic theme
-├── config.js               # Shared data for ALL themes
+├── config.js               # Shared data for all themes
 ├── .gitignore              # Git ignore file
 └── README.md               # This file
 ```
@@ -255,29 +238,28 @@ portfolio/
 
 ## 💡 Tips
 
-1. **Choose your theme**: Visit `themes.html` to see all designs and pick your favorite
-2. **Single source of truth**: Edit `config.js` once to update ALL themes
-3. **Keep it updated**: Regularly update your projects and experience
-4. **Add real links**: Replace placeholder `#` links with actual URLs
-5. **Optimize images**: If you add images, optimize them for web
-6. **Test all themes**: Check each design on different devices
-7. **Mix and match**: Feel free to combine features from different themes
+1. **Choose your theme**: Visit `themes.html` to see both designs and pick your favorite
+2. **Toggle dark/light mode**: Both themes have a toggle button in the top-right corner
+3. **Single source of truth**: Edit `config.js` once to update both themes
+4. **Keep it updated**: Regularly update your projects and experience
+5. **Add real links**: Replace placeholder `#` links with actual URLs
+6. **Optimize images**: If you add images, optimize them for web
+7. **Test both modes**: Check each design in both light and dark mode on different devices
 8. **Use analytics**: Consider adding Google Analytics to track visitors
 
 ## 🎯 Which Theme Should I Choose?
 
-- **For corporate/traditional jobs**: Classic Developer
-- **For modern startups**: Modern Minimalist or Bento Grid
-- **For developer-focused roles**: Terminal Hacker
-- **Not sure?**: Host all themes and let visitors choose!
+- **For clean, modern look**: Modern Minimalist
+- **For iOS-inspired design**: Bento Grid
+- **Not sure?**: Host both and let visitors choose via `themes.html`!
 
-## 🚀 Deploying Multiple Themes
+## 🚀 Deploying Your Portfolio
 
-You can deploy all themes to GitHub Pages:
+You can deploy to GitHub Pages:
 
 1. Set `themes.html` as your landing page, or
-2. Choose one theme as `index.html` and keep others accessible, or
-3. Deploy all themes and link to them in your resume/LinkedIn
+2. Choose one theme as your main page and rename it to `index.html`, or
+3. Deploy both themes and link to them in your resume/LinkedIn
 
 ## 🤝 Contributing
 

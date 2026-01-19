@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -59,27 +60,71 @@
         .nav-link:hover::after {
             width: 100%;
         }
+
+        /* Theme toggle button */
+        .theme-toggle {
+            width: 60px;
+            height: 30px;
+            background: #e5e7eb;
+            border-radius: 30px;
+            position: relative;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .dark .theme-toggle {
+            background: #374151;
+        }
+
+        .theme-toggle-circle {
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            transition: transform 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .dark .theme-toggle-circle {
+            transform: translateX(30px);
+        }
     </style>
 </head>
-<body class="bg-gradient-to-br from-gray-50 to-gray-100 font-sans">
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 font-sans transition-colors duration-300">
     <!-- Back to Themes -->
     <div class="fixed top-4 left-4 z-50">
-        <a href="themes.html" class="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-lg hover:shadow-xl transition-shadow text-sm font-medium text-gray-700 hover:text-dotnet">
+        <a href="themes.html" class="inline-flex items-center gap-2 bg-white dark:bg-gray-800 px-4 py-2 rounded-full shadow-lg hover:shadow-xl transition-shadow text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-dotnet dark:hover:text-purple-400">
             <span>←</span> All Themes
         </a>
     </div>
 
+    <!-- Theme Toggle -->
+    <div class="fixed top-4 right-4 z-50">
+        <div class="theme-toggle" onclick="toggleTheme()">
+            <div class="theme-toggle-circle">
+                <span class="dark:hidden">☀️</span>
+                <span class="hidden dark:inline">🌙</span>
+            </div>
+        </div>
+    </div>
+
     <!-- Navigation -->
-    <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-40 border-b border-gray-200">
+    <nav class="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md sticky top-0 z-40 border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
         <div class="max-w-6xl mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
                 <a href="#" class="text-2xl font-bold gradient-text">Portfolio</a>
                 <div class="hidden md:flex gap-8">
-                    <a href="#about" class="nav-link text-gray-600 hover:text-gray-900 font-medium">About</a>
-                    <a href="#skills" class="nav-link text-gray-600 hover:text-gray-900 font-medium">Skills</a>
-                    <a href="#projects" class="nav-link text-gray-600 hover:text-gray-900 font-medium">Projects</a>
-                    <a href="#experience" class="nav-link text-gray-600 hover:text-gray-900 font-medium">Experience</a>
-                    <a href="#contact" class="nav-link text-gray-600 hover:text-gray-900 font-medium">Contact</a>
+                    <a href="#about" class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium">About</a>
+                    <a href="#skills" class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium">Skills</a>
+                    <a href="#projects" class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium">Projects</a>
+                    <a href="#experience" class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium">Experience</a>
+                    <a href="#contact" class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium">Contact</a>
                 </div>
             </div>
         </div>
@@ -88,10 +133,10 @@
     <!-- Hero Section -->
     <section class="min-h-screen flex items-center justify-center px-6 pt-20 pb-16">
         <div class="max-w-4xl mx-auto text-center">
-            <div class="mb-6 text-gray-500 text-lg">Hello, I'm</div>
+            <div class="mb-6 text-gray-500 dark:text-gray-400 text-lg">Hello, I'm</div>
             <h1 class="text-6xl md:text-7xl font-extrabold mb-4 gradient-text" id="developer-name">[Your Name]</h1>
-            <h2 class="text-3xl md:text-4xl font-semibold text-gray-800 mb-6">.NET & C++ Developer</h2>
-            <p class="text-xl text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed" id="hero-bio">
+            <h2 class="text-3xl md:text-4xl font-semibold text-gray-800 dark:text-gray-200 mb-6">.NET & C++ Developer</h2>
+            <p class="text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed" id="hero-bio">
                 Passionate software engineer specializing in high-performance applications, 
                 backend systems, and enterprise solutions using .NET and C++.
             </p>
@@ -99,7 +144,7 @@
                 <a href="#projects" class="bg-gradient-to-r from-dotnet to-purple-600 text-white px-8 py-3 rounded-full font-semibold hover:shadow-xl transition-all hover:-translate-y-1">
                     View Projects
                 </a>
-                <a href="#contact" class="bg-white text-gray-800 px-8 py-3 rounded-full font-semibold border-2 border-gray-300 hover:border-dotnet hover:shadow-lg transition-all">
+                <a href="#contact" class="bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-8 py-3 rounded-full font-semibold border-2 border-gray-300 dark:border-gray-600 hover:border-dotnet dark:hover:border-purple-500 hover:shadow-lg transition-all">
                     Get in Touch
                 </a>
             </div>
@@ -107,17 +152,17 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 px-6 bg-white">
+    <section id="about" class="py-20 px-6 bg-white dark:bg-gray-900 transition-colors duration-300">
         <div class="max-w-4xl mx-auto">
             <h2 class="text-4xl font-bold mb-12 text-center gradient-text">About Me</h2>
             <div class="prose prose-lg max-w-none">
-                <p class="text-gray-700 text-lg leading-relaxed mb-6" id="about-description">
+                <p class="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-6" id="about-description">
                     I'm a software developer with expertise in .NET and C++ development. 
                     I enjoy building high-performance applications, working with low-level systems, 
                     and creating scalable enterprise solutions. My passion lies in writing clean, 
                     efficient code and solving complex technical challenges.
                 </p>
-                <p class="text-gray-700 text-lg leading-relaxed">
+                <p class="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
                     With experience across the full development lifecycle, I bring a practical 
                     approach to software engineering, focusing on quality, performance, and maintainability.
                 </p>
@@ -131,12 +176,12 @@
             <h2 class="text-4xl font-bold mb-12 text-center gradient-text">Technical Skills</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- .NET -->
-                <div class="bg-white rounded-2xl p-6 hover-lift hover:shadow-xl border border-gray-200">
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 hover-lift hover:shadow-xl border border-gray-200 dark:border-gray-700 transition-colors duration-300">
                     <div class="w-16 h-16 bg-gradient-to-br from-dotnet to-purple-600 rounded-xl flex items-center justify-center text-white text-2xl font-bold mb-4">
                         .NET
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-gray-800">.NET Ecosystem</h3>
-                    <ul class="space-y-2 text-gray-600">
+                    <h3 class="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">.NET Ecosystem</h3>
+                    <ul class="space-y-2 text-gray-600 dark:text-gray-400">
                         <li class="flex items-start">
                             <span class="text-dotnet mr-2">▹</span>
                             <span>C# & .NET Core/.NET 6+</span>
@@ -157,12 +202,12 @@
                 </div>
 
                 <!-- C++ -->
-                <div class="bg-white rounded-2xl p-6 hover-lift hover:shadow-xl border border-gray-200">
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 hover-lift hover:shadow-xl border border-gray-200 dark:border-gray-700 transition-colors duration-300">
                     <div class="w-16 h-16 bg-gradient-to-br from-cpp to-blue-500 rounded-xl flex items-center justify-center text-white text-xl font-bold mb-4">
                         C++
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-gray-800">C++ Development</h3>
-                    <ul class="space-y-2 text-gray-600">
+                    <h3 class="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">C++ Development</h3>
+                    <ul class="space-y-2 text-gray-600 dark:text-gray-400">
                         <li class="flex items-start">
                             <span class="text-cpp mr-2">▹</span>
                             <span>Modern C++ (11/14/17/20)</span>
@@ -183,12 +228,12 @@
                 </div>
 
                 <!-- Tools -->
-                <div class="bg-white rounded-2xl p-6 hover-lift hover:shadow-xl border border-gray-200">
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 hover-lift hover:shadow-xl border border-gray-200 dark:border-gray-700 transition-colors duration-300">
                     <div class="w-16 h-16 bg-gradient-to-br from-accent to-blue-400 rounded-xl flex items-center justify-center text-3xl mb-4">
                         ⚙️
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-gray-800">Tools & Practices</h3>
-                    <ul class="space-y-2 text-gray-600">
+                    <h3 class="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">Tools & Practices</h3>
+                    <ul class="space-y-2 text-gray-600 dark:text-gray-400">
                         <li class="flex items-start">
                             <span class="text-accent mr-2">▹</span>
                             <span>Git & Version Control</span>
@@ -209,12 +254,12 @@
                 </div>
 
                 <!-- Databases -->
-                <div class="bg-white rounded-2xl p-6 hover-lift hover:shadow-xl border border-gray-200">
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 hover-lift hover:shadow-xl border border-gray-200 dark:border-gray-700 transition-colors duration-300">
                     <div class="w-16 h-16 bg-gradient-to-br from-gray-700 to-gray-500 rounded-xl flex items-center justify-center text-white text-2xl font-bold mb-4">
                         DB
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-gray-800">Data & Storage</h3>
-                    <ul class="space-y-2 text-gray-600">
+                    <h3 class="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">Data & Storage</h3>
+                    <ul class="space-y-2 text-gray-600 dark:text-gray-400">
                         <li class="flex items-start">
                             <span class="text-gray-700 mr-2">▹</span>
                             <span>SQL Server & T-SQL</span>
@@ -238,7 +283,7 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20 px-6 bg-white">
+    <section id="projects" class="py-20 px-6 bg-white dark:bg-gray-900 transition-colors duration-300">
         <div class="max-w-6xl mx-auto">
             <h2 class="text-4xl font-bold mb-12 text-center gradient-text">Featured Projects</h2>
             <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -258,7 +303,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 px-6 bg-white">
+    <section id="contact" class="py-20 px-6 bg-white dark:bg-gray-900 transition-colors duration-300">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="text-4xl font-bold mb-8 gradient-text">Get In Touch</h2>
             <p class="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
@@ -272,7 +317,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-8 text-center">
+    <footer class="bg-gray-900 dark:bg-gray-950 text-white py-8 text-center transition-colors duration-300">
         <p>&copy; <span id="current-year"></span> <span id="footer-name">[Your Name]</span>. Built with Tailwind CSS.</p>
     </footer>
 
@@ -300,21 +345,21 @@
             
             CONFIG.projects.forEach(project => {
                 const card = document.createElement('div');
-                card.className = 'bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 hover-lift hover:shadow-xl border border-gray-200 flex flex-col';
+                card.className = 'bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-700 rounded-2xl p-6 hover-lift hover:shadow-xl border border-gray-200 dark:border-gray-600 flex flex-col transition-colors duration-300';
                 
                 card.innerHTML = `
-                    <h3 class="text-xl font-bold mb-3 text-gray-800">${project.title}</h3>
-                    <p class="text-gray-600 mb-4 flex-grow">${project.description}</p>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-gray-200">${project.title}</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4 flex-grow">${project.description}</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         ${project.technologies.map(tech => 
-                            `<span class="bg-purple-100 text-dotnet px-3 py-1 rounded-full text-sm font-medium">${tech}</span>`
+                            `<span class="bg-purple-100 dark:bg-purple-900/30 text-dotnet dark:text-purple-400 px-3 py-1 rounded-full text-sm font-medium">${tech}</span>`
                         ).join('')}
                     </div>
                     <div class="flex gap-4">
                         ${project.github !== '#' ? 
-                            `<a href="${project.github}" class="text-dotnet hover:text-purple-700 font-semibold" target="_blank">GitHub →</a>` : ''}
+                            `<a href="${project.github}" class="text-dotnet hover:text-purple-700 dark:hover:text-purple-400 font-semibold" target="_blank">GitHub →</a>` : ''}
                         ${project.demo !== '#' ? 
-                            `<a href="${project.demo}" class="text-cpp hover:text-blue-700 font-semibold" target="_blank">Demo →</a>` : ''}
+                            `<a href="${project.demo}" class="text-cpp hover:text-blue-700 dark:hover:text-blue-400 font-semibold" target="_blank">Demo →</a>` : ''}
                     </div>
                 `;
                 
@@ -332,11 +377,11 @@
                 
                 item.innerHTML = `
                     <div class="absolute left-0 top-0 w-4 h-4 bg-dotnet rounded-full -translate-x-[9px]"></div>
-                    <div class="bg-white rounded-xl p-6 hover-lift hover:shadow-lg border border-gray-200">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">${exp.title}</h3>
-                        <div class="text-dotnet font-semibold mb-1">${exp.company}</div>
-                        <div class="text-gray-500 mb-4">${exp.period}</div>
-                        <p class="text-gray-600 leading-relaxed">${exp.description}</p>
+                    <div class="bg-white dark:bg-gray-800 rounded-xl p-6 hover-lift hover:shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-300">
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-2">${exp.title}</h3>
+                        <div class="text-dotnet dark:text-purple-400 font-semibold mb-1">${exp.company}</div>
+                        <div class="text-gray-500 dark:text-gray-400 mb-4">${exp.period}</div>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">${exp.description}</p>
                     </div>
                 `;
                 
@@ -352,7 +397,7 @@
                 const link = document.createElement('a');
                 link.href = contact.url;
                 link.target = '_blank';
-                link.className = 'flex items-center gap-3 bg-gradient-to-br from-gray-50 to-white px-6 py-4 rounded-2xl hover-lift hover:shadow-xl border border-gray-200 font-semibold text-gray-800';
+                link.className = 'flex items-center gap-3 bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-700 px-6 py-4 rounded-2xl hover-lift hover:shadow-xl border border-gray-200 dark:border-gray-600 font-semibold text-gray-800 dark:text-gray-200 transition-colors duration-300';
                 link.innerHTML = `
                     <span class="text-2xl">${contact.icon}</span>
                     <span>${contact.name}</span>
@@ -364,6 +409,29 @@
         function setCurrentYear() {
             document.getElementById('current-year').textContent = new Date().getFullYear();
         }
+
+        // Dark mode toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.classList.contains('dark') ? 'dark' : 'light';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            if (newTheme === 'dark') {
+                html.classList.add('dark');
+            } else {
+                html.classList.remove('dark');
+            }
+            
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Initialize theme from localStorage
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+            }
+        })();
 
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {

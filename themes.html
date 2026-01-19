@@ -184,36 +184,12 @@
 <body>
     <div class="container">
         <h1>🎨 Portfolio Design Gallery</h1>
-        <p class="subtitle">Choose from multiple modern designs - all using the same data from config.js</p>
+        <p class="subtitle">Choose from two modern designs - both with dark/light mode support!</p>
 
         <div class="themes-grid">
-            <!-- Original Design -->
-            <div class="theme-card" onclick="window.location.href='index.html'">
-                <div class="theme-preview">
-                    <span class="theme-badge original">Original</span>
-                    <div style="width: 100%; height: 100%; background: linear-gradient(135deg, rgba(81, 43, 212, 0.3) 0%, rgba(0, 89, 156, 0.3) 100%); display: flex; align-items: center; justify-content: center; font-size: 3rem;">
-                        💼
-                    </div>
-                </div>
-                <div class="theme-info">
-                    <h3 class="theme-title">Classic Developer</h3>
-                    <p class="theme-description">
-                        The original design featuring a professional dark theme with purple (.NET) and blue (C++) colors. Clean and modern with smooth animations.
-                    </p>
-                    <div class="theme-features">
-                        <span class="feature-tag">Vanilla JS</span>
-                        <span class="feature-tag">Dark Theme</span>
-                        <span class="feature-tag">Responsive</span>
-                        <span class="feature-tag">Code Window</span>
-                    </div>
-                    <a href="index.html" class="theme-link">View Design →</a>
-                </div>
-            </div>
-
             <!-- Design 1: Minimalist -->
             <div class="theme-card" onclick="window.location.href='design-minimalist.html'">
                 <div class="theme-preview">
-                    <span class="theme-badge">New</span>
                     <div style="width: 100%; height: 100%; background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%); display: flex; align-items: center; justify-content: center; font-size: 3rem; color: #512BD4;">
                         ✨
                     </div>
@@ -221,11 +197,11 @@
                 <div class="theme-info">
                     <h3 class="theme-title">Modern Minimalist</h3>
                     <p class="theme-description">
-                        Clean, light-themed design with Tailwind CSS. Features a minimalist approach with emphasis on typography and whitespace.
+                        Clean, elegant design with Tailwind CSS. Features a minimalist approach with emphasis on typography and whitespace. Includes dark/light mode toggle.
                     </p>
                     <div class="theme-features">
                         <span class="feature-tag">Tailwind CSS</span>
-                        <span class="feature-tag">Light Theme</span>
+                        <span class="feature-tag">Dark/Light Mode</span>
                         <span class="feature-tag">Typography-focused</span>
                         <span class="feature-tag">Minimal</span>
                     </div>
@@ -233,33 +209,9 @@
                 </div>
             </div>
 
-            <!-- Design 2: Terminal -->
-            <div class="theme-card" onclick="window.location.href='design-terminal.html'">
-                <div class="theme-preview">
-                    <span class="theme-badge">New</span>
-                    <div style="width: 100%; height: 100%; background: #0d0d0d; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: #00ff00; font-family: monospace;">
-                        &gt;_
-                    </div>
-                </div>
-                <div class="theme-info">
-                    <h3 class="theme-title">Terminal Hacker</h3>
-                    <p class="theme-description">
-                        Retro terminal-inspired design with glowing effects and matrix-style animations. Perfect for showcasing your developer skills.
-                    </p>
-                    <div class="theme-features">
-                        <span class="feature-tag">Retro Terminal</span>
-                        <span class="feature-tag">Glowing Effects</span>
-                        <span class="feature-tag">Animations</span>
-                        <span class="feature-tag">Monospace</span>
-                    </div>
-                    <a href="design-terminal.html" class="theme-link">View Design →</a>
-                </div>
-            </div>
-
-            <!-- Design 3: Bento Grid -->
+            <!-- Design 2: Bento Grid -->
             <div class="theme-card" onclick="window.location.href='design-bento.html'">
                 <div class="theme-preview">
-                    <span class="theme-badge">New</span>
                     <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #1e1e2e 0%, #2a2a3e 100%); display: flex; align-items: center; justify-content: center; font-size: 3rem;">
                         📱
                     </div>
@@ -267,11 +219,11 @@
                 <div class="theme-info">
                     <h3 class="theme-title">Bento Grid</h3>
                     <p class="theme-description">
-                        Modern card-based layout inspired by iOS design. Features a masonry grid layout with interactive cards and smooth transitions.
+                        Modern card-based layout inspired by iOS design. Features a masonry grid layout with interactive cards, smooth transitions, and dark/light mode toggle.
                     </p>
                     <div class="theme-features">
                         <span class="feature-tag">CSS Grid</span>
-                        <span class="feature-tag">Card-based</span>
+                        <span class="feature-tag">Dark/Light Mode</span>
                         <span class="feature-tag">Interactive</span>
                         <span class="feature-tag">Modern</span>
                     </div>
@@ -283,19 +235,17 @@
         <div class="info-section">
             <h2>📝 About These Designs</h2>
             <p>
-                All portfolio designs use the same data source (<code>config.js</code>) so you can easily switch between them without duplicating content. Simply edit <code>config.js</code> once, and all themes will reflect your changes.
+                Both portfolio designs use the same data source (<code>config.js</code>) so you can easily switch between them without duplicating content. Simply edit <code>config.js</code> once, and both themes will reflect your changes.
             </p>
             <p>
                 Each design showcases different modern web technologies and design patterns:
             </p>
             <ul style="color: #8b949e; margin-left: 1.5rem; line-height: 1.8;">
-                <li><strong>Classic Developer:</strong> Vanilla JavaScript with custom CSS animations</li>
-                <li><strong>Modern Minimalist:</strong> Tailwind CSS utility-first framework</li>
-                <li><strong>Terminal Hacker:</strong> Custom CSS with retro terminal effects</li>
-                <li><strong>Bento Grid:</strong> Advanced CSS Grid with modern card layouts</li>
+                <li><strong>Modern Minimalist:</strong> Tailwind CSS utility-first framework with dark/light mode</li>
+                <li><strong>Bento Grid:</strong> Advanced CSS Grid with modern card layouts and dark/light mode</li>
             </ul>
             <p style="margin-top: 1rem;">
-                All designs are fully responsive, optimized for performance, and ready for GitHub Pages deployment. Choose the one that best represents your personal brand as a .NET developer! 🚀
+                Both designs are fully responsive, include dark/light mode toggles, optimized for performance, and ready for GitHub Pages deployment. Choose the one that best represents your personal brand as a .NET developer! 🚀
             </p>
         </div>
     </div>
