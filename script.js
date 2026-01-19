@@ -376,6 +376,9 @@ function initWaveBackground() {
         }
     ];
     
+    // Cache gradients for performance
+    const gradientCache = new Map();
+    
     // Set canvas size and create gradients
     function resizeCanvas() {
         canvas.width = canvas.offsetWidth;
@@ -399,9 +402,6 @@ function initWaveBackground() {
     window.addEventListener('resize', throttledResize);
     
     let time = 0;
-    
-    // Cache gradients for performance
-    const gradientCache = new Map();
     
     function drawWave(wave, yOffset) {
         const centerY = canvas.height / 2 + yOffset;
@@ -430,17 +430,18 @@ function initWaveBackground() {
         let gradient = gradientCache.get(opacityKey);
         
         if (!gradient) {
+            // Limit cache size before adding new entry
+            if (gradientCache.size >= 100) {
+                // Remove oldest entry (first in iteration order)
+                const firstKey = gradientCache.keys().next().value;
+                gradientCache.delete(firstKey);
+            }
+            
             gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
             gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${currentOpacity * 0.8})`);
             gradient.addColorStop(0.5, `rgba(${r}, ${g}, ${b}, ${currentOpacity})`);
             gradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, ${currentOpacity * 0.8})`);
             gradientCache.set(opacityKey, gradient);
-            
-            // Limit cache size to prevent memory issues
-            if (gradientCache.size > 100) {
-                const firstKey = gradientCache.keys().next().value;
-                gradientCache.delete(firstKey);
-            }
         }
         
         // Draw the wave line stroke with dynamic opacity (clamped to max 1.0)
