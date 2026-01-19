@@ -32,19 +32,47 @@
 
     <!-- Hero Section -->
     <section id="hero" class="hero">
-        <!-- Animated wave layers -->
+        <!-- Smooth gradient wave animations -->
         <div class="wave-container">
-            <svg class="wave wave-1" viewBox="0 0 1440 320" preserveAspectRatio="none">
-                <path d="M0,160 Q360,100 720,160 T1440,160 L1440,320 L0,320 Z"></path>
+            <svg class="wave-layer wave-1" viewBox="0 0 1200 600" preserveAspectRatio="none">
+                <defs>
+                    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:rgba(81, 43, 212, 0.4);stop-opacity:1" />
+                        <stop offset="50%" style="stop-color:rgba(124, 58, 237, 0.6);stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:rgba(147, 51, 234, 0.4);stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <path fill="url(#gradient1)" d="M0,200 Q150,100 300,200 T600,200 T900,200 T1200,200 L1200,600 L0,600 Z" />
             </svg>
-            <svg class="wave wave-2" viewBox="0 0 1440 320" preserveAspectRatio="none">
-                <path d="M0,192 Q360,140 720,192 T1440,192 L1440,320 L0,320 Z"></path>
+            <svg class="wave-layer wave-2" viewBox="0 0 1200 600" preserveAspectRatio="none">
+                <defs>
+                    <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:rgba(0, 89, 156, 0.3);stop-opacity:1" />
+                        <stop offset="50%" style="stop-color:rgba(0, 120, 215, 0.5);stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:rgba(37, 99, 235, 0.3);stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <path fill="url(#gradient2)" d="M0,250 Q150,150 300,250 T600,250 T900,250 T1200,250 L1200,600 L0,600 Z" />
             </svg>
-            <svg class="wave wave-3" viewBox="0 0 1440 320" preserveAspectRatio="none">
-                <path d="M0,224 Q360,180 720,224 T1440,224 L1440,320 L0,320 Z"></path>
+            <svg class="wave-layer wave-3" viewBox="0 0 1200 600" preserveAspectRatio="none">
+                <defs>
+                    <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:rgba(124, 58, 237, 0.25);stop-opacity:1" />
+                        <stop offset="50%" style="stop-color:rgba(168, 85, 247, 0.4);stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:rgba(124, 58, 237, 0.25);stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <path fill="url(#gradient3)" d="M0,300 Q150,200 300,300 T600,300 T900,300 T1200,300 L1200,600 L0,600 Z" />
             </svg>
-            <svg class="wave wave-4" viewBox="0 0 1440 320" preserveAspectRatio="none">
-                <path d="M0,256 Q360,220 720,256 T1440,256 L1440,320 L0,320 Z"></path>
+            <svg class="wave-layer wave-4" viewBox="0 0 1200 600" preserveAspectRatio="none">
+                <defs>
+                    <linearGradient id="gradient4" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:rgba(0, 89, 156, 0.2);stop-opacity:1" />
+                        <stop offset="50%" style="stop-color:rgba(59, 130, 246, 0.35);stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:rgba(0, 89, 156, 0.2);stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <path fill="url(#gradient4)" d="M0,350 Q150,250 300,350 T600,350 T900,350 T1200,350 L1200,600 L0,600 Z" />
             </svg>
         </div>
         
