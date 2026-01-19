@@ -386,36 +386,36 @@ function initWaveBackground() {
         const centerY = canvas.height / 2 + yOffset;
         const step = 3; // Draw every 3 pixels for better performance
         
-        // Draw the wave line first
-        ctx.beginPath();
+        // Calculate wave points once
+        const points = [];
         for (let x = 0; x < canvas.width; x += step) {
             const y = centerY + 
                      Math.sin(x * wave.frequency + time * wave.speed + wave.offset) * wave.amplitude;
-            
-            if (x === 0) {
-                ctx.moveTo(x, y);
-            } else {
-                ctx.lineTo(x, y);
-            }
+            points.push({ x, y });
         }
         
-        // Draw stroke for the wave line
+        // Draw the wave line stroke
+        ctx.beginPath();
+        points.forEach((point, index) => {
+            if (index === 0) {
+                ctx.moveTo(point.x, point.y);
+            } else {
+                ctx.lineTo(point.x, point.y);
+            }
+        });
         ctx.strokeStyle = wave.strokeColor;
         ctx.lineWidth = 2;
         ctx.stroke();
         
-        // Now draw the filled area
+        // Draw the filled area
         ctx.beginPath();
-        for (let x = 0; x < canvas.width; x += step) {
-            const y = centerY + 
-                     Math.sin(x * wave.frequency + time * wave.speed + wave.offset) * wave.amplitude;
-            
-            if (x === 0) {
-                ctx.moveTo(x, y);
+        points.forEach((point, index) => {
+            if (index === 0) {
+                ctx.moveTo(point.x, point.y);
             } else {
-                ctx.lineTo(x, y);
+                ctx.lineTo(point.x, point.y);
             }
-        }
+        });
         
         // Complete the path for filling
         ctx.lineTo(canvas.width, canvas.height);
@@ -446,6 +446,9 @@ function initWaveBackground() {
     return () => {
         if (animationFrameId) {
             cancelAnimationFrame(animationFrameId);
+        }
+        if (resizeTimeout) {
+            clearTimeout(resizeTimeout);
         }
         window.removeEventListener('resize', throttledResize);
     };
