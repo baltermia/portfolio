@@ -1,15 +1,14 @@
 // Configuration file - Edit this to update your portfolio content
 const CONFIG = {
     // Personal Information
-    name: "Baltermia",
+    name: "Baltermia Clopath",
     title: ".NET & C++ Developer",
     bio: "Passionate software engineer specializing in high-performance applications, backend systems, and enterprise solutions using .NET and C++.",
     aboutDescription: `I'm a software developer with expertise in .NET development as well as C++ (although a bit rusty - pun intended). 
-        I enjoy building high-performance business applications and designing robust and scalable backend architecture. 
-        My passion lies in writing clean, efficient code to ensure maintainability and solving complex technical challenges.
-        I'm a software architect, not a vibe-coder.`,
-    aboutDescription2: `With experience across the full development lifecycle, I bring a practical 
-        approach to software engineering, focusing on quality, performance, and maintainability.`,
+        I enjoy building high-performance business applications and designing robust & scalable backend architecture.
+        Creating future-proof foundations that scale and other developers can easily build upon is my strength.`,
+    aboutDescription2: `My passion lies in writing clean, efficient code to ensure maintainability and 
+        solving complex technical challenges. I'm a software architect, not a vibe-coder. I take pride in my work.`,
 
     // Skills - Add your skills here
     skills: [
@@ -20,23 +19,11 @@ const CONFIG = {
             color: "from-dotnet to-purple-600",
             bulletColor: "dotnet",
             items: [
-                "C# & .NET Core/.NET 6+",
-                "ASP.NET Core & Web API",
-                "Entity Framework Core",
-                "Blazor & SignalR"
-            ]
-        },
-        {
-            name: "C++ Development",
-            icon: "C++",
-            iconType: "text",
-            color: "from-cpp to-blue-500",
-            bulletColor: "cpp",
-            items: [
-                "Modern C++ (11/14/17/20)",
-                "STL & Boost Libraries",
-                "Memory Management",
-                "Performance Optimization"
+                "Legacy & Modern .NET",
+                "Deep Async & TPL understanding",
+                "DI & Microservices",
+                "Entity Framework",
+                "Blazor & Web APIs"
             ]
         },
         {
@@ -47,9 +34,10 @@ const CONFIG = {
             bulletColor: "accent",
             items: [
                 "Git & Version Control",
-                "Docker & Containers",
-                "CI/CD Pipelines",
-                "REST APIs & Microservices"
+                "Docker & Deployment",
+                "Basic CI/CD",
+                "Linux Server Management",
+                "A lot more..."
             ]
         },
         {
@@ -59,58 +47,59 @@ const CONFIG = {
             color: "from-gray-700 to-gray-500",
             bulletColor: "gray-700",
             items: [
-                "SQL Server & T-SQL",
-                "PostgreSQL & MySQL",
-                "Redis & Caching",
-                "Database Design"
+                "MariaDB & MySQL",
+                "PostgreSQL ",
+                "Redis Caching",
+                "RabbitMQ",
+                "MQTT & High-throughput Messaging",
             ]
-        }
+        },
+        {
+            name: "C++ Development",
+            icon: "C++",
+            iconType: "text",
+            color: "from-cpp to-blue-500",
+            bulletColor: "cpp",
+            items: [
+                "Modern C++ & STL",
+                "Reliable Memory Management",
+                "Qt Framework",
+                "Image Manipulation",
+                "Cmake Build System"
+            ]
+        },
     ],
 
     // Projects - Add your projects here
     projects: [
         {
-            title: "Enterprise API Platform",
-            description: "High-performance REST API built with ASP.NET Core, serving millions of requests daily with sub-100ms response times.",
-            technologies: ["C#", "ASP.NET Core", "SQL Server", "Redis", "Docker"],
-            github: "#",
+            title: "Blazor Camera Streamer Library",
+            description: "A Blazor Component Library that adds real-time camera streaming capabilities implemented using JS Interop. 25k+ downloads.",
+            technologies: [".NET", "Blazor", "JS Interop", "Typescript", "47+ Github Starts", "2023"],
+            github: "https://github.com/baltermia/blazor-camera-streamer",
             demo: "#"
         },
         {
-            title: "Real-time Data Processing Engine",
-            description: "Multi-threaded C++ application for processing real-time data streams with low latency and high throughput.",
-            technologies: ["C++17", "Boost", "CMake", "Linux"],
-            github: "#",
+            title: "Study Companion",
+            description: "Quickly implemented school project of a AI assisted Telegram bot to help students with their studies.",
+            technologies: [".NET", "DI", "Redis", "PostgreSQL", "EF", "2025"],
+            github: "https://github.com/baltermia/study-companion",
             demo: "#"
         },
         {
-            title: "Microservices Architecture",
-            description: "Distributed system with multiple microservices communicating via message queues, built with .NET and Docker.",
-            technologies: ["C#", ".NET 6", "RabbitMQ", "Kubernetes", "Azure"],
-            github: "#",
+            title: "Simple Surveys",
+            description: "Another school project - a Blazor app with a lot of different UI components to create and take surveys.",
+            technologies: [".NET", "Blazor", "WebAPI", "EF", "2021"],
+            github: "https://github.com/baltermia/simple-surveys",
             demo: "#"
         },
         {
-            title: "Performance Optimization Library",
-            description: "C++ library providing memory-efficient data structures and algorithms for high-performance computing.",
-            technologies: ["C++20", "STL", "CMake", "GoogleTest"],
-            github: "#",
-            demo: "#"
+            title: "Mobile Weather",
+            description: "A xamarin mobile weather app.",
+            technologies: [".NET", "Xamarin", "2021"], 
+            github: "https://github.com/baltermia/mobile-weather",
+            demo: "https://baltermia.github.io/mobile-weather/"
         },
-        {
-            title: "Web Application Dashboard",
-            description: "Modern web dashboard with real-time updates using SignalR and Blazor WebAssembly.",
-            technologies: ["Blazor", "SignalR", "C#", "JavaScript"],
-            github: "#",
-            demo: "#"
-        },
-        {
-            title: "Game Engine Component",
-            description: "Custom physics engine component written in C++ for game development with optimized collision detection.",
-            technologies: ["C++", "OpenGL", "Physics", "CMake"],
-            github: "#",
-            demo: "#"
-        }
     ],
 
     // Experience - Add your work experience here
@@ -125,7 +114,7 @@ const CONFIG = {
             title: "Mid-Level Software Engineer",
             company: "esave AG",
             period: "2023 - Today",
-            description: "Overhauled the architecture of a modern .NET server application that parses binary-data from IoT devices over MQTT. Focusing on performance, maintainability and scalability. Also maintained a legacy .NET Framework WinForms application and developed new features. "
+            description: "Overhauled the architecture of a modern .NET server application that parses binary-data from IoT devices over MQTT. Focusing on performance, maintainability and scalability. Managed Linux Server Infrastructure. Also maintained a legacy .NET Framework WinForms application and developed new features. "
         },
         {
             title: "Apprenticeship - Junior Software Developer",
