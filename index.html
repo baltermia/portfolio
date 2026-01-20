@@ -242,28 +242,46 @@
                 card.className = 'bg-white dark:bg-gray-800 rounded-2xl p-6 hover-lift hover:shadow-xl border border-gray-200 dark:border-gray-700 transition-colors duration-300';
                 
                 // Determine icon display based on iconType
-                let iconContent;
+                const iconDiv = document.createElement('div');
+                iconDiv.className = `w-16 h-16 bg-gradient-to-br ${skill.color} rounded-xl flex items-center justify-center mb-4`;
+                
                 if (skill.iconType === 'emoji') {
-                    iconContent = `<div class="w-16 h-16 bg-gradient-to-br ${skill.color} rounded-xl flex items-center justify-center text-3xl mb-4">${skill.icon}</div>`;
+                    iconDiv.className += ' text-3xl';
+                    iconDiv.textContent = skill.icon;
                 } else {
                     // Default to text icon
-                    const fontSize = skill.icon.length > 3 ? 'xl' : '2xl';
-                    iconContent = `<div class="w-16 h-16 bg-gradient-to-br ${skill.color} rounded-xl flex items-center justify-center text-white text-${fontSize} font-bold mb-4">${skill.icon}</div>`;
+                    const MAX_COMPACT_ICON_LENGTH = 3;
+                    const fontSize = skill.icon.length > MAX_COMPACT_ICON_LENGTH ? 'xl' : '2xl';
+                    iconDiv.className += ` text-white text-${fontSize} font-bold`;
+                    iconDiv.textContent = skill.icon;
                 }
                 
-                card.innerHTML = `
-                    ${iconContent}
-                    <h3 class="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">${skill.name}</h3>
-                    <ul class="space-y-2 text-gray-600 dark:text-gray-400">
-                        ${skill.items.map(item => `
-                            <li class="flex items-start">
-                                <span class="text-${skill.bulletColor} mr-2">▹</span>
-                                <span>${item}</span>
-                            </li>
-                        `).join('')}
-                    </ul>
-                `;
+                const title = document.createElement('h3');
+                title.className = 'text-xl font-bold mb-4 text-gray-800 dark:text-gray-200';
+                title.textContent = skill.name;
                 
+                const list = document.createElement('ul');
+                list.className = 'space-y-2 text-gray-600 dark:text-gray-400';
+                
+                skill.items.forEach(item => {
+                    const li = document.createElement('li');
+                    li.className = 'flex items-start';
+                    
+                    const bullet = document.createElement('span');
+                    bullet.className = `text-${skill.bulletColor} mr-2`;
+                    bullet.textContent = '▹';
+                    
+                    const text = document.createElement('span');
+                    text.textContent = item;
+                    
+                    li.appendChild(bullet);
+                    li.appendChild(text);
+                    list.appendChild(li);
+                });
+                
+                card.appendChild(iconDiv);
+                card.appendChild(title);
+                card.appendChild(list);
                 container.appendChild(card);
             });
         }
