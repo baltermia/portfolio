@@ -8,6 +8,64 @@ const CONFIG = {
         I enjoy building high-performance business applications and designing robust and scalable backend architecture. 
         My passion lies in writing clean, efficient code to ensure maintainability and solving complex technical challenges.
         I'm a software architect, not a vibe-coder.`,
+    aboutDescription2: `With experience across the full development lifecycle, I bring a practical 
+        approach to software engineering, focusing on quality, performance, and maintainability.`,
+
+    // Skills - Add your skills here
+    skills: [
+        {
+            name: ".NET Ecosystem",
+            icon: ".NET",
+            iconType: "text", // "text" or "emoji"
+            color: "from-dotnet to-purple-600",
+            bulletColor: "dotnet",
+            items: [
+                "C# & .NET Core/.NET 6+",
+                "ASP.NET Core & Web API",
+                "Entity Framework Core",
+                "Blazor & SignalR"
+            ]
+        },
+        {
+            name: "C++ Development",
+            icon: "C++",
+            iconType: "text",
+            color: "from-cpp to-blue-500",
+            bulletColor: "cpp",
+            items: [
+                "Modern C++ (11/14/17/20)",
+                "STL & Boost Libraries",
+                "Memory Management",
+                "Performance Optimization"
+            ]
+        },
+        {
+            name: "Tools & Practices",
+            icon: "⚙️",
+            iconType: "emoji",
+            color: "from-accent to-blue-400",
+            bulletColor: "accent",
+            items: [
+                "Git & Version Control",
+                "Docker & Containers",
+                "CI/CD Pipelines",
+                "REST APIs & Microservices"
+            ]
+        },
+        {
+            name: "Data & Storage",
+            icon: "DB",
+            iconType: "text",
+            color: "from-gray-700 to-gray-500",
+            bulletColor: "gray-700",
+            items: [
+                "SQL Server & T-SQL",
+                "PostgreSQL & MySQL",
+                "Redis & Caching",
+                "Database Design"
+            ]
+        }
+    ],
 
     // Projects - Add your projects here
     projects: [
