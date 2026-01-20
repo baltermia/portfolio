@@ -5,9 +5,9 @@ const CONFIG = {
     title: ".NET & C++ Developer",
     bio: "Passionate software engineer specializing in high-performance applications, backend systems, and enterprise solutions using .NET and C++.",
     aboutDescription: `I'm a software developer with expertise in .NET development as well as C++ (although a bit rusty - pun intended). 
-        I enjoy building high-performance business applications and designing robust and scalable backend architectures. 
+        I enjoy building high-performance business applications and designing robust and scalable backend architecture. 
         My passion lies in writing clean, efficient code to ensure maintainability and solving complex technical challenges.
-        I'm an architect, not a coder.`,
+        I'm a software architect, not a vibe-coder.`,
 
     // Projects - Add your projects here
     projects: [
@@ -58,22 +58,22 @@ const CONFIG = {
     // Experience - Add your work experience here
     experience: [
         {
-            title: "Senior Software Engineer",
-            company: "[Company Name]",
-            period: "[Start Date] - Present",
-            description: "Leading development of enterprise-grade applications using .NET and C++. Architecting scalable solutions and mentoring junior developers."
+            title: "Bachelor",
+            company: "FHGR",
+            period: "2025 - Today",
+            description: "Studying Artificial Intelligence in Software Engineering at Fachhochschule Graubünden."
         },
         {
-            title: "Software Engineer",
+            title: "Mid-Level Software Engineer",
             company: "esave AG",
             period: "2023 - Today",
-            description: "Developed and maintained backend services using ASP.NET Core and C++. Improved system performance by 40% through optimization."
+            description: "Overhauled the architecture of a modern .NET server application that parses binary-data from IoT devices over MQTT. Focusing on performance, maintainability and scalability. Also maintained a legacy .NET Framework WinForms application and developed new features. "
         },
         {
-            title: "Apprenticeship",
+            title: "Apprenticeship - Junior Software Developer",
             company: "Trumpf Schweiz AG",
             period: "2019 - 2023",
-            description: "Built web applications and APIs using .NET technologies. Collaborated with cross-functional teams in an Agile environment."
+            description: "Implemented Image-Recognition features and drawing Tools in a C++ Qt Vision Application. Built Windows Desktop Apps with WPF and Blazor WepApps in .NET from the ground up."
         }
     ],
 
