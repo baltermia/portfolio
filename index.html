@@ -220,6 +220,9 @@
         async function loadConfig() {
             try {
                 const response = await fetch('config.json');
+                if (!response.ok) {
+                    throw new Error(`Failed to load config.json: ${response.status} ${response.statusText}`);
+                }
                 CONFIG = await response.json();
                 loadPersonalInfo();
                 loadSkills();
@@ -229,6 +232,16 @@
                 setCurrentYear();
             } catch (error) {
                 console.error('Error loading config.json:', error);
+                // Show user-friendly error message
+                document.body.innerHTML = `
+                    <div style="display: flex; align-items: center; justify-content: center; height: 100vh; font-family: sans-serif;">
+                        <div style="text-align: center; padding: 20px;">
+                            <h1 style="color: #ef4444; margin-bottom: 10px;">⚠️ Configuration Error</h1>
+                            <p style="color: #6b7280;">Failed to load portfolio configuration. Please check that config.json exists and is valid.</p>
+                            <p style="color: #9ca3af; font-size: 14px; margin-top: 10px;">Error: ${error.message}</p>
+                        </div>
+                    </div>
+                `;
             }
         }
 
@@ -253,17 +266,27 @@
                 const card = document.createElement('div');
                 card.className = 'bg-white dark:bg-gray-800 rounded-2xl p-6 hover-lift hover:shadow-xl border border-gray-200 dark:border-gray-700 transition-colors duration-300';
                 
-                // Determine icon display
-                const isEmoji = skill.icon.length <= 3 && !skill.icon.startsWith('<');
+                // Determine if icon is an emoji (single character or emoji sequence)
+                const isEmoji = /^[\p{Emoji}\p{Emoji_Component}]+$/u.test(skill.icon) || skill.icon.length <= 2;
                 const iconContent = isEmoji 
                     ? `<div class="w-16 h-16 bg-gradient-to-br ${skill.color} rounded-xl flex items-center justify-center text-3xl mb-4">${skill.icon}</div>`
                     : `<div class="w-16 h-16 bg-gradient-to-br ${skill.color} rounded-xl flex items-center justify-center text-white text-2xl font-bold mb-4">${skill.icon}</div>`;
                 
-                // Determine bullet color based on gradient
-                let bulletColorClass = 'text-dotnet';
-                if (skill.color.includes('cpp')) bulletColorClass = 'text-cpp';
-                else if (skill.color.includes('accent')) bulletColorClass = 'text-accent';
-                else if (skill.color.includes('gray')) bulletColorClass = 'text-gray-700';
+                // Map color gradients to bullet colors
+                const colorMap = {
+                    'dotnet': 'text-dotnet',
+                    'cpp': 'text-cpp',
+                    'accent': 'text-accent',
+                    'gray-700': 'text-gray-700'
+                };
+                
+                let bulletColorClass = 'text-dotnet'; // default
+                for (const [colorKey, bulletClass] of Object.entries(colorMap)) {
+                    if (skill.color.includes(colorKey)) {
+                        bulletColorClass = bulletClass;
+                        break;
+                    }
+                }
                 
                 card.innerHTML = `
                     ${iconContent}
