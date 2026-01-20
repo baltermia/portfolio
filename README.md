@@ -8,7 +8,7 @@ A modern, responsive portfolio website for a .NET and C++ developer with dark/li
 - **Dark/Light Mode**: Toggle between dark and light color schemes with preference persistence
 - **Fully Responsive**: Works perfectly on desktop, tablet, and mobile devices
 - **Smooth Animations**: Engaging scroll animations and transitions
-- **Easy Customization**: All content managed through a single `config.js` file
+- **Easy Customization**: All content managed through a single `config.json` file
 - **GitHub Pages Ready**: Optimized for free hosting on GitHub Pages
 - **Performance Optimized**: Fast loading with minimal dependencies
 - **Accessible**: Semantic HTML and keyboard navigation support
@@ -17,20 +17,23 @@ A modern, responsive portfolio website for a .NET and C++ developer with dark/li
 
 ### 1. Customize Your Content
 
-Edit the `config.js` file to add your personal information:
+Edit the `config.json` file to add your personal information:
 
-```javascript
-const CONFIG = {
-    name: "Your Name",
-    bio: "Your bio text...",
-    // ... update all fields
-};
+```json
+{
+    "name": "Your Name",
+    "bio": "Your bio text...",
+    "aboutDescription": "First paragraph about yourself...",
+    "aboutSecondParagraph": "Second paragraph about yourself..."
+}
 ```
 
-**What to update in config.js:**
+**What to update in config.json:**
 - `name`: Your full name
 - `bio`: Short bio for the hero section
-- `aboutDescription`: Longer description about yourself
+- `aboutDescription`: First paragraph about yourself
+- `aboutSecondParagraph`: Second paragraph about yourself
+- `skills`: Array of your technical skills with categories
 - `projects`: Array of your projects with details
 - `experience`: Array of your work experience
 - `contact`: Your social media and contact links
@@ -114,40 +117,57 @@ jobs:
 
 ### Adding New Projects
 
-In `config.js`, add to the `projects` array:
+In `config.json`, add to the `projects` array:
 
-```javascript
+```json
 {
-    title: "Your Project Name",
-    description: "Brief description of what the project does",
-    technologies: ["C#", "ASP.NET", "SQL Server"],
-    github: "https://github.com/username/repo",
-    demo: "https://your-demo-url.com"
+    "title": "Your Project Name",
+    "description": "Brief description of what the project does",
+    "technologies": ["C#", "ASP.NET", "SQL Server"],
+    "github": "https://github.com/username/repo",
+    "demo": "https://your-demo-url.com"
+}
+```
+
+### Adding Skills
+
+In `config.json`, add to the `skills` array:
+
+```json
+{
+    "title": "Your Skill Category",
+    "icon": "🔧",
+    "color": "from-blue-600 to-blue-400",
+    "items": [
+        "Skill 1",
+        "Skill 2",
+        "Skill 3"
+    ]
 }
 ```
 
 ### Adding Work Experience
 
-In `config.js`, add to the `experience` array:
+In `config.json`, add to the `experience` array:
 
-```javascript
+```json
 {
-    title: "Senior .NET Developer",
-    company: "Company Name",
-    period: "Jan 2020 - Present",
-    description: "What you did at this company..."
+    "title": "Senior .NET Developer",
+    "company": "Company Name",
+    "period": "Jan 2020 - Present",
+    "description": "What you did at this company..."
 }
 ```
 
 ### Updating Contact Links
 
-In `config.js`, update the `contact` array:
+In `config.json`, update the `contact` array:
 
-```javascript
+```json
 {
-    name: "GitHub",
-    url: "https://github.com/your-username",
-    icon: "📦"
+    "name": "GitHub",
+    "url": "https://github.com/your-username",
+    "icon": "📦"
 }
 ```
 
@@ -199,7 +219,7 @@ Fully responsive and works on:
 ```
 portfolio/
 ├── index.html    # Main portfolio page
-├── config.js     # Content configuration
+├── config.json   # Content configuration
 ├── .gitignore    # Git ignore file
 └── README.md     # This file
 ```
@@ -215,7 +235,7 @@ portfolio/
 ## 💡 Tips
 
 1. **Toggle dark/light mode**: Use the button in the top-right corner
-2. **Edit once**: Update `config.js` to change all content
+2. **Edit once**: Update `config.json` to change all content
 3. **Keep it updated**: Regularly update your projects and experience
 4. **Add real links**: Replace placeholder `#` links with actual URLs
 5. **Optimize images**: If you add images, optimize them for web
@@ -240,11 +260,12 @@ This project is open source and available under the MIT License.
 
 ## 🎯 Next Steps
 
-1. Update `config.js` with your personal information
+1. Update `config.json` with your personal information
 2. Replace placeholder project data with your actual projects
 3. Add your real GitHub, LinkedIn, and other social links
-4. Deploy to GitHub Pages
-5. Share your portfolio with the world!
+4. Customize the skills section with your own technical skills
+5. Deploy to GitHub Pages
+6. Share your portfolio with the world!
 
 ## 🤝 Contributing
 
