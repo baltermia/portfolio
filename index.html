@@ -241,17 +241,15 @@
                 const card = document.createElement('div');
                 card.className = 'bg-white dark:bg-gray-800 rounded-2xl p-6 hover-lift hover:shadow-xl border border-gray-200 dark:border-gray-700 transition-colors duration-300';
                 
-                // Determine icon display style
-                const isEmoji = skill.icon.length <= 3 && !skill.icon.includes('<');
-                const iconContent = isEmoji 
-                    ? `<div class="w-16 h-16 bg-gradient-to-br ${skill.color} rounded-xl flex items-center justify-center text-3xl mb-4">${skill.icon}</div>`
-                    : `<div class="w-16 h-16 bg-gradient-to-br ${skill.color} rounded-xl flex items-center justify-center text-white text-${skill.icon.length > 3 ? 'xl' : '2xl'} font-bold mb-4">${skill.icon}</div>`;
-                
-                // Get color for bullet points (extract first color from gradient)
-                const colorClass = skill.color.includes('dotnet') ? 'dotnet' : 
-                                   skill.color.includes('cpp') ? 'cpp' : 
-                                   skill.color.includes('accent') ? 'accent' : 
-                                   'gray-700';
+                // Determine icon display based on iconType
+                let iconContent;
+                if (skill.iconType === 'emoji') {
+                    iconContent = `<div class="w-16 h-16 bg-gradient-to-br ${skill.color} rounded-xl flex items-center justify-center text-3xl mb-4">${skill.icon}</div>`;
+                } else {
+                    // Default to text icon
+                    const fontSize = skill.icon.length > 3 ? 'xl' : '2xl';
+                    iconContent = `<div class="w-16 h-16 bg-gradient-to-br ${skill.color} rounded-xl flex items-center justify-center text-white text-${fontSize} font-bold mb-4">${skill.icon}</div>`;
+                }
                 
                 card.innerHTML = `
                     ${iconContent}
@@ -259,7 +257,7 @@
                     <ul class="space-y-2 text-gray-600 dark:text-gray-400">
                         ${skill.items.map(item => `
                             <li class="flex items-start">
-                                <span class="text-${colorClass} mr-2">▹</span>
+                                <span class="text-${skill.bulletColor} mr-2">▹</span>
                                 <span>${item}</span>
                             </li>
                         `).join('')}

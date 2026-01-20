@@ -16,7 +16,9 @@ const CONFIG = {
         {
             name: ".NET Ecosystem",
             icon: ".NET",
+            iconType: "text", // "text" or "emoji"
             color: "from-dotnet to-purple-600",
+            bulletColor: "dotnet",
             items: [
                 "C# & .NET Core/.NET 6+",
                 "ASP.NET Core & Web API",
@@ -27,7 +29,9 @@ const CONFIG = {
         {
             name: "C++ Development",
             icon: "C++",
+            iconType: "text",
             color: "from-cpp to-blue-500",
+            bulletColor: "cpp",
             items: [
                 "Modern C++ (11/14/17/20)",
                 "STL & Boost Libraries",
@@ -38,7 +42,9 @@ const CONFIG = {
         {
             name: "Tools & Practices",
             icon: "⚙️",
+            iconType: "emoji",
             color: "from-accent to-blue-400",
+            bulletColor: "accent",
             items: [
                 "Git & Version Control",
                 "Docker & Containers",
@@ -49,7 +55,9 @@ const CONFIG = {
         {
             name: "Data & Storage",
             icon: "DB",
+            iconType: "text",
             color: "from-gray-700 to-gray-500",
+            bulletColor: "gray-700",
             items: [
                 "SQL Server & T-SQL",
                 "PostgreSQL & MySQL",
