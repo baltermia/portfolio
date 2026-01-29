@@ -8,7 +8,7 @@ const CONFIG = {
         I enjoy building high-performance business applications and designing robust & scalable backend architecture.
         Creating future-proof foundations that scale and other developers can easily build upon is my strength.`,
     aboutDescription2: `My passion lies in writing clean, efficient code to ensure maintainability and 
-        solving complex technical challenges. I'm a software architect, not a vibe-coder. I take pride in my work.`,
+        solving complex technical challenges. I'm a software architect, not a vibe-coder.`,
 
     // Skills - Add your skills here
     skills: [
